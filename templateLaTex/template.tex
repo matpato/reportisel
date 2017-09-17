@@ -1,0 +1,244 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Template for writing reports
+%%
+%% Version 20170313 (Mar 2017) v1.0
+%% 
+%% Instituto Superior de Engenharia de Lisboa
+%% Instituto Politécnico de Lisboa
+%%
+%% BUGS and SUGGESTIONS: please submit an issue at the project web page
+%%
+%% Authors / Contributors:
+%%     - Matilde Pós-de-Mina Pato (mpato@deetc.isel.pt)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Main options (please read the manual for further details)
+%% Options marked with (*) are the values by default
+%% See also file "defaults.tex"
+%%
+%% - Class of text
+%%           (*)rpt		- Report
+%%           preprpt		- Preliminary Report (in preparation)
+%% - Languages
+%%           (*)pt			- português
+%%           en		- english
+%% - Single/double sided printing
+%%           oneside	- single sided printing
+%%           (*)twoside	- double sided printing
+%% - Font size
+%%           11pt	- Use font size 11
+%%           (*)12pt		- Use font size 12
+%% - Text encoding
+%%           latin1		- Windows
+%%           (*)utf8	- other systems (Linux, Mac)
+%%
+%% DON'T MIX TEXT ENCODINGS. All the files are saved using UTF8. 
+%% If you want to use latin1, you should first re-save all these
+%% files (*.tex, *.cls,  ...) using latin1 encoding first
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[rpt,pt,twoside,12pt,a4paper,listof=totoc]{reportisel} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  BEGINING OF USER COSTUMIZATION
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%====================================================================
+% Additional packages you may want to use (comment those not needed)
+%====================================================================
+
+% To enable customizble enumerates
+\usepackage{paralist}
+
+% Beautiful simple tables
+\usepackage{booktabs}
+
+% Use colors in background of table cells
+%\usepackage{colortbl}
+
+% Sort citations - ONLY if using "plain" style, otherwise keep commented
+%\usepackage[sort]{cite}
+
+%====================================================================
+% PACKAGE listings
+%====================================================================
+%
+% The ‘listings’ package is loaded at the beginning of a LATEX file in the preamble
+% Here is an example of my \lset{} declaration for ‘R’ code. 
+% Then, after having including this (also in the preamble), I simply include my external ‘R’ files. 
+% They can be included using an:
+% \include{ } - like interface to the external files;
+% by using the command \lstinputlisting{./code.R} to include the code from the file code.R which % is located in the same directory as the ‘LATEX’ source file.
+%
+
+\lstdefinelanguage{custom}
+{
+morekeywords={public, void},
+sensitive=false,
+morecomment=[l]{//},
+morecomment=[s]{/*}{*/},
+morestring=[b]",
+}
+
+
+%====================================================================
+%% FIGURES and TABLES
+%====================================================================
+% To aggregate multiple figures in a single one with subfigures
+\usepackage{subfigure}
+
+% To have text wrapping figures
+\usepackage{wrapfig}
+\usepackage{float}						% Improves the interface for defining floating objects such as figures and tables
+%
+%
+%====================================================================
+% Standard configuration for user included packages
+%====================================================================
+
+% Where to look for figures
+\graphicspath{{Logo/}{Chapters/img/}} 
+
+% Where to find code files
+\newcommand{\codefiles}[1]{../code-files/#1}
+% syntax: \lstinputlisting[]{\rfile{name.r}}
+
+% Where to find Chapters files
+\newcommand{\chapterfiles}[1]{Chapters/#1}
+% syntax: \include{\chapterfiles{name.tex}}
+
+% Force word hyphenation
+\hyphenation{do-cu-ment}
+
+%====================================================================
+% Some default values that you may whish to override
+%====================================================================
+%% Identification: items prefixed with (*) are the default values, as defined in "defaults.tex"
+% (*)\university{Instituto Superior de Engenharia de Lisboa}
+% (*)\faculty{Instituto Politécnico de Lisboa}
+% (*)\majorfield{Engenharia Informática}
+% (*)\universitylogo{logoisel}
+
+% Use double spacing (default is one-and-half spacing) is nice
+%     for supervisor to inert revision notes and comments.
+% (*)\onehalfspacing
+% \doublespacing
+
+%%============================================================
+
+% Title of the report
+% USe "\\" to break the title into two or more lines
+
+\input{datas}
+%% Title of Report + author(s) + professor + date
+
+%%------------------------------------------------------------
+%% All the names inside braces below sould correspond to a file
+%%     with extension ".tex" and located in the "Chapters" folder
+%%------------------------------------------------------------
+
+% Resume/summary text in Portuguese
+\ptabstractfile{resumo}
+
+% Resume/summary text in English
+\enabstractfile{abstract}
+
+%%------------------------------------------------------------
+% The Table of Contents is always printed. The other lists may be omited.
+%%------------------------------------------------------------
+
+% Conditionally insert List of Figures, Tables and Code Listings
+\addlisttofrontmatter{\conditionalLoF} 	% The List of Figures. 
+\addlisttofrontmatter{\conditionalLoT} 	% The List of Tables. 
+\addlisttofrontmatter{\conditionalLoL} 	% The List of Code Listings. 
+
+% Text chapters
+% syntax: \chapterfile{file}
+\chapterfile{chapter1}
+\chapterfile{chapter2}
+\chapterfile{chapter3}
+
+% Text appendixes. Comment if not needed
+% sintax: \appendixfile{file}
+%\appendixfile{appendix1}
+
+%%============================================================
+%%
+%%  END OF USER COSTUMIZATION
+%%
+%%============================================================
+%
+%
+%%============================================================
+%% Please do not change below this point!!! :)
+%%============================================================
+%% Begining of document
+\begin{document}
+
+%%------------------------------------------------------------
+%% Before main text
+\frontmatter
+
+%% The first front page. Repeats the front page twice 
+%% \Repeat{n-times}{\command}
+%\Repeat{1}{\frontpage}
+\frontpage
+%%------------------------------------------------------------
+%% All the names inside braces below sould correspond to a file
+%%     with extension ".tex" and located in the "Chapters" folder
+%%------------------------------------------------------------
+
+% Abstracts/resumes/summaries in two languages. The first abstract will
+% use the document main language and second the foreign language
+\printabstract
+
+%%------------------------------------------------------------
+%% Always print the table of contents
+\tableofcontents 
+%
+%% Print other lists of contents according to instructions given above
+\printotherlists
+%
+% ----------------------------------------------------------------------
+%  Print Document Chapters
+% ----------------------------------------------------------------------
+%%
+\printchapters
+%%
+% ----------------------------------------------------------------------
+%  Print Bibliography
+% ----------------------------------------------------------------------
+%%
+%\cleardoublepage
+
+% Include all references in .bib file, even non-cited ones...
+\nocite{*}
+
+% Produces the bibliography section when processed by BibTeX
+% ----------------------------------------------------------------------
+%% Bibliography style
+% ----------------------------------------------------------------------
+% Replacement bibliography styles provided by 'natbib' package
+% (plainnat.bst, abbrvnat.bst, unsrtnat.bst )
+\bibliographystyle{plainnat} % > entries ordered alphabetically
+
+% External bibliography database file in the BibTeX format
+\cleardoublepage
+\bibliography{bibliography} % file "bibliography.bib"
+%\addcontentsline{toc}{chapter}{\bibname} % Add entry in the table of contents as chapter
+
+%%
+% ----------------------------------------------------------------------
+%  Print appendixes, if any!  (optional)
+% ----------------------------------------------------------------------
+%%
+\cleardoublepage
+\setcounter{page}{1} \pagenumbering{roman}
+\printappendixes 
+\cleardoublepage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% End of document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document} 
