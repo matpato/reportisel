@@ -29,7 +29,7 @@ https://github.com/matpato/thesisisel.
 		$ bibtex template
 		$ pdflatex template (twice)
 
-# ------------------------------------------------------------------------------------ #
+#
 
 2. Description
 
@@ -49,13 +49,13 @@ thesisisel This is the main directory and includes:
 	3.8 bibliography.bib: The bib file. An easy way to find to import citation into bibtex is select option "Show links to import citation into BibTex" in \href{http://scholar.google.pt/scholar_settings?hl=en&as_sdt=0,5}{Scholar google settings}.
 	3.9 reportisel.cls: The  LaTeX class file for the thesis{} style. Currently, some of the defaults are stored here instead of \verb!defaults.tex!. This file should not be changed, unless you're ready to play with fire! :) - DO NOT CHANGE);
 	
-# ------------------------------------------------------------------------------------ #
+#
 
 3. Some informations
 
 The template will first automatically place the abstract in the language of the main text and then the abstract in the other language. For example, if the dissertation is written in Portuguese, the abstract will appear first in Portuguese, then in English, followed by the main text in Portuguese.
 
-# ------------------------------------------------------------------------------------ #
+#
 
 4. How to write using LaTex
 
@@ -65,7 +65,7 @@ The template will first automatically place the abstract in the language of the 
 
 	tikZ and PGF: http://www.texample.net/tikz/
 
-# ------------------------------------------------------------------------------------ #
+# 
 
 5. Available Software
 
@@ -77,9 +77,9 @@ The template will first automatically place the abstract in the language of the 
 	
 	4. Overleaf is an online LaTeX and Rich Text collaborative writing and publishing tool that makes the whole process of writing, editing and publishing scientific documents much quicker and easier. (source: https://www.overleaf.com)
 
-# ------------------------------------------------------------------------------------ #
+# 
 
-Authors
+Author:
 
 	Matilde Pós-de-Mina Pato
 
