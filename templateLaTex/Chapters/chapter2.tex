@@ -12,7 +12,7 @@
 % ================
 \section{Introdução} % (fold)
 \label{sec:introduction}
-Este documento reutiliza algumas partes do \textit{template} criado por mim, para a escrita da Dissertação/Trabalho de Projecto de Mestrado de MEIC. Por ser meramente informativo, o resto do documento está escrito na lingua inglesa.
+Este documento reutiliza algumas partes do \textit{template} criado por mim, para a escrita da Dissertação/Trabalho de Projecto de Mestrado de MEIC. Por ser meramente informativo, o resto do documento encontra-se escrito na lingua inglesa.
 
 % section introduction (end)
 
@@ -22,22 +22,23 @@ Este documento reutiliza algumas partes do \textit{template} criado por mim, par
 \section{Folder Structure} % (fold)
 \label{sec:folder_structure}
 
-The template file for writing dissertations in  \texttt{LaTeX} is organized into a main directory, a set of files and sub-directories:
-\begin{description}
-	\item[ReportISEL] This is the main directory and includes:
+The template file for writing dissertations in  \texttt{LaTeX} is organized into a main directory, a set of files and sub-directories. \textbf{reportisel}  is the main directory and includes:
 	\begin{description}
 		\item[Logo] Directory with Faculty logos;
-		\item[code-files] Directory with useful bash scripts, e.g., for cleaning all temporary files;
 		\item[Chapters] Directory where to put user files (text and figures);
+		\begin{description}
+		\item[scripts] Directory with useful bash scripts, e.g., for cleaning all temporary files;
+		\item[img] Directory with all images to use in the chapters, e.g. \texttt{ra-raster.png};
+		\end{description}
 		\item[alpha-pt.bst] A file with bibliography names in portuguese, e.g., 'Relatório Técnico'. This file is used automatically if Portuguese is selected as the main language (see below);
-		\item[defaults.tex] A file with the main default values for the package (institution name, faculty's logo, degree name and similars);
+		\item[defaults.tex] A file with the main default values for the package (institution name, faculty's logo, degree name and similars - {\color{red}{TO CHANGE BY THE USER}});
+		\item[personaldataofreport.tex] A file with the main default values for the package (identification of report as well as the author and juries - {\color{red}{TO CHANGE BY THE USER}});
 		\item[template.tex] The main file. You should run  \texttt{LaTeX} in this one. Please refrain from changing the file content outside of the well defined area;
 		\item[bibliography.bib] The bib file. An easy way to find to import citation into \texttt{bibtex} is select option \texttt{Show links to import citation into \texttt{BibTex}} in \href{http://scholar.google.pt/scholar_settings?hl=en&as_sdt=0,5}{\texttt{Scholar google settings}}.
-		\item[reportisel.cls] The  \texttt{LaTeX} class file for the thesis{} style. Currently, some of the defaults are stored here instead of \verb!defaults.tex!. This file should not be changed, unless you're ready to play with fire! :)
+		\item[reportisel.cls] The  \texttt{LaTeX} class file for the thesis{} style. Currently, some of the defaults are stored here instead of \verb!defaults.tex!. This file should not be changed, unless you're ready to play with fire! :) - {\color{red}{DO NOT CHANGE}});
 	\end{description}
-\end{description}
 
-Again, we would like to recall that all the user \texttt{LaTeX} files should be stored in the \verb!ReportISEL! directory, and all the images in \verb!ReportISEL/Chapters/img! directory.
+Again, we would like to recall that all the user \texttt{LaTeX} files should be stored in the \verb!reportisel! directory, and all the images in \verb!reportisel/Chapters/img! directory.\todo[inline]{Yet another note!}
 % section folder_structure (end)
 
 % ===================

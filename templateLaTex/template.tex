@@ -2,9 +2,12 @@
 %% Template for writing reports
 %%
 %% Version 20170313 (Mar 2017) v1.0
-%% 
+%% Version 20170313 (Sep 2017) v1.1
+
 %% Instituto Superior de Engenharia de Lisboa
 %% Instituto Politécnico de Lisboa
+%%
+%% Project web page at https://github.com/matpato/reportisel
 %%
 %% BUGS and SUGGESTIONS: please submit an issue at the project web page
 %%
@@ -16,37 +19,29 @@
 %% Options marked with (*) are the values by default
 %% See also file "defaults.tex"
 %%
-%% - Class of text
-%%           (*)rpt		- Report
-%%           preprpt		- Preliminary Report (in preparation)
-%% - Languages
-%%           (*)pt			- português
-%%           en		- english
-%% - Single/double sided printing
-%%           oneside	- single sided printing
-%%           (*)twoside	- double sided printing
-%% - Font size
-%%           11pt	- Use font size 11
-%%           (*)12pt		- Use font size 12
-%% - Text encoding
-%%           latin1		- Windows
-%%           (*)utf8	- other systems (Linux, Mac)
-%%
 %% DON'T MIX TEXT ENCODINGS. All the files are saved using UTF8. 
 %% If you want to use latin1, you should first re-save all these
 %% files (*.tex, *.cls,  ...) using latin1 encoding first
 %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\documentclass[rpt,pt,twoside,12pt,a4paper,listof=totoc]{reportisel} 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[
+	rpt,			% Technical Report 
+	pt,			% (*) pt, en - languages 
+	twoside,	% (*) twoside, oneside - single or double sided printing
+	12pt,		% (*) 12pt, 11pt, 10pt - use font size
+	a4paper,	% the paper size/format
+	utf8,			% (*) utf8, latin1	- Text encoding: Linux, Mac or Windows
+	hyperref = true,  % Hyperlinks in citations: true(*) false
+	listof=totoc
+	]{reportisel} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%  BEGINING OF USER COSTUMIZATION
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%====================================================================
+%=========================================================
 % Additional packages you may want to use (comment those not needed)
-%====================================================================
+%=========================================================
 
 % To enable customizble enumerates
 \usepackage{paralist}
@@ -60,9 +55,9 @@
 % Sort citations - ONLY if using "plain" style, otherwise keep commented
 %\usepackage[sort]{cite}
 
-%====================================================================
+%=========================================================
 % PACKAGE listings
-%====================================================================
+%=========================================================
 %
 % The ‘listings’ package is loaded at the beginning of a LATEX file in the preamble
 % Here is an example of my \lset{} declaration for ‘R’ code. 
@@ -81,28 +76,31 @@ morecomment=[s]{/*}{*/},
 morestring=[b]",
 }
 
+% To register TODO notes in the text
+\usepackage[textsize=footnotesize]{todonotes}
+\setlength{\marginparwidth}{1.5cm}
 
-%====================================================================
+%=========================================================
 %% FIGURES and TABLES
-%====================================================================
+%=========================================================
 % To aggregate multiple figures in a single one with subfigures
 \usepackage{subfigure}
 
 % To have text wrapping figures
 \usepackage{wrapfig}
-\usepackage{float}						% Improves the interface for defining floating objects such as figures and tables
+\usepackage{float}		% Improves the interface for defining floating objects such as figures and tables
 %
 %
-%====================================================================
+%=========================================================
 % Standard configuration for user included packages
-%====================================================================
+%=========================================================
 
 % Where to look for figures
 \graphicspath{{Logo/}{Chapters/img/}} 
 
-% Where to find code files
-\newcommand{\codefiles}[1]{../code-files/#1}
-% syntax: \lstinputlisting[]{\rfile{name.r}}
+% Where to find code scripts files
+\newcommand{\codefiles}[1]{Chapters/scripts/#1}
+% syntax: \lstinputlisting[]{\codefiles{name.ext}}
 
 % Where to find Chapters files
 \newcommand{\chapterfiles}[1]{Chapters/#1}
@@ -111,9 +109,9 @@ morestring=[b]",
 % Force word hyphenation
 \hyphenation{do-cu-ment}
 
-%====================================================================
+%=========================================================
 % Some default values that you may whish to override
-%====================================================================
+%=========================================================
 %% Identification: items prefixed with (*) are the default values, as defined in "defaults.tex"
 % (*)\university{Instituto Superior de Engenharia de Lisboa}
 % (*)\faculty{Instituto Politécnico de Lisboa}
@@ -125,18 +123,18 @@ morestring=[b]",
 % (*)\onehalfspacing
 % \doublespacing
 
-%%============================================================
+%=========================================================
 
 % Title of the report
 % USe "\\" to break the title into two or more lines
 
-\input{datas}
+\input{personaldataofreport}
 %% Title of Report + author(s) + professor + date
 
-%%------------------------------------------------------------
+%=========================================================
 %% All the names inside braces below sould correspond to a file
 %%     with extension ".tex" and located in the "Chapters" folder
-%%------------------------------------------------------------
+%=========================================================
 
 % Resume/summary text in Portuguese
 \ptabstractfile{resumo}
@@ -144,9 +142,9 @@ morestring=[b]",
 % Resume/summary text in English
 \enabstractfile{abstract}
 
-%%------------------------------------------------------------
+%=========================================================
 % The Table of Contents is always printed. The other lists may be omited.
-%%------------------------------------------------------------
+%=========================================================
 
 % Conditionally insert List of Figures, Tables and Code Listings
 \addlisttofrontmatter{\conditionalLoF} 	% The List of Figures. 
@@ -163,20 +161,20 @@ morestring=[b]",
 % sintax: \appendixfile{file}
 %\appendixfile{appendix1}
 
-%%============================================================
+%=========================================================
 %%
 %%  END OF USER COSTUMIZATION
 %%
-%%============================================================
+%=========================================================
 %
 %
-%%============================================================
+%=========================================================
 %% Please do not change below this point!!! :)
-%%============================================================
+%=========================================================
 %% Begining of document
 \begin{document}
 
-%%------------------------------------------------------------
+%=========================================================
 %% Before main text
 \frontmatter
 
@@ -184,31 +182,31 @@ morestring=[b]",
 %% \Repeat{n-times}{\command}
 %\Repeat{1}{\frontpage}
 \frontpage
-%%------------------------------------------------------------
+%=========================================================
 %% All the names inside braces below sould correspond to a file
 %%     with extension ".tex" and located in the "Chapters" folder
-%%------------------------------------------------------------
+%=========================================================
 
 % Abstracts/resumes/summaries in two languages. The first abstract will
 % use the document main language and second the foreign language
 \printabstract
 
-%%------------------------------------------------------------
+%=========================================================
 %% Always print the table of contents
 \tableofcontents 
 %
 %% Print other lists of contents according to instructions given above
 \printotherlists
 %
-% ----------------------------------------------------------------------
+%=========================================================
 %  Print Document Chapters
-% ----------------------------------------------------------------------
+%=========================================================
 %%
 \printchapters
 %%
-% ----------------------------------------------------------------------
+%=========================================================
 %  Print Bibliography
-% ----------------------------------------------------------------------
+%=========================================================
 %%
 %\cleardoublepage
 
@@ -216,9 +214,9 @@ morestring=[b]",
 \nocite{*}
 
 % Produces the bibliography section when processed by BibTeX
-% ----------------------------------------------------------------------
+%=========================================================
 %% Bibliography style
-% ----------------------------------------------------------------------
+%=========================================================
 % Replacement bibliography styles provided by 'natbib' package
 % (plainnat.bst, abbrvnat.bst, unsrtnat.bst )
 \bibliographystyle{plainnat} % > entries ordered alphabetically
@@ -229,9 +227,9 @@ morestring=[b]",
 %\addcontentsline{toc}{chapter}{\bibname} % Add entry in the table of contents as chapter
 
 %%
-% ----------------------------------------------------------------------
+%=========================================================
 %  Print appendixes, if any!  (optional)
-% ----------------------------------------------------------------------
+%=========================================================
 %%
 \cleardoublepage
 \setcounter{page}{1} \pagenumbering{roman}

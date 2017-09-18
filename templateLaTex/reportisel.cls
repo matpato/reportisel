@@ -669,14 +669,73 @@ Unidade Curricular de \@course \\da \@majorfield}
 \fontsize{10}{12.2}
 \selectfont
 \textbf{\@theday ~ -- ~ \@themonth ~ -- ~  \@theyear}
+
+\pagebreak
+
+\begin{minipage}{0.3\textwidth}
+% Put logo
+	\logo{\@universitylogo}
+\end{minipage}
+
+
+\vspace{0.25cm}	
+% Name of Department
+	\fontsize{14}{16.8}
+	\selectfont
+	\textbf{\@department}
+
+
+\vspace{0.65cm}
+% Title of Dissertation
+	\fontsize{18}{21.6}
+	\selectfont
+	\textbf{\@title}\\[0.75cm]
+
+\vspace{1.5cm}	
+% Name of Candidate
+	\fontsize{14}{16.8}
+	\selectfont
+	\textbf{
+		\ctable[
+			cap=,
+			caption=,
+			label=,
+			pos=h,
+			maxwidth=1\linewidth,
+			doinside=\hspace*{0.1cm},
+		]{rX}{}{ 
+		\toprule
+		\printauthor[]{1}\\
+		\ifnum \@theauthorcount > 1		
+		\midrule	
+		\printauthor[]{2}\\
+		\ifnum \@theauthorcount > 2
+		\midrule	
+		\printauthor[]{3}
+		\fi\fi
+}}
+
+
+\vspace{0.75cm}
+% Degree
+	\fontsize{12}{13}
+	\selectfont
+	\@presentationtext
+	
+\vfill\vfill
+
+\vfill\vfill\vfill
+
+% Date
+\fontsize{10}{12.2}
+\selectfont
+\textbf{\@themonth, \@theyear}
 	
 \end{center}
 \restoregeometry
 \cleardoublepage %\newpage
 \thispagestyle{empty}
-
 }
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Quote
@@ -737,6 +796,44 @@ Unidade Curricular de \@course \\da \@majorfield}
 ]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Common listing def: R and Java example
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% == Color Definitions ===
+\definecolor{olivegreen}    {cmyk}{0.64, 0 , 0.95, 0.40}
+\definecolor{dkgreen}{rgb}{0,0.6,0}	
+\definecolor{midnightblue}  {cmyk}{0.98, 0.13, 0 , 0.43}
+%%      
+
+%% R       
+\lstset{ 
+	language=R, 					% the language of the code
+	basicstyle=\scriptsize\ttfamily,  % the size of the fonts that are used for the code
+	commentstyle=\ttfamily\color{dkgreen}, % comment style
+    numbers=left,     % where to put the line-numbers; possible values are (none, left, right)
+   	numberstyle=\ttfamily\color{gray}, 
+	stepnumber=2,  % the step between two line-numbers. If it's 1, each line will be numbered
+    numbersep=5pt, 				% how far the line-numbers are from the code	
+    xleftmargin=\parindent,
+    backgroundcolor=\color{white},  % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+	showspaces=false,   % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  	showstringspaces=false,  % underline spaces within strings only
+  	showtabs=false,               % show tabs within strings adding particular underscores
+	stringstyle=\ttfamily, 		 % typewriter type for strings
+	frame=single, 					 % adds a frame around the code
+	rulesepcolor=\color{black},
+	columns=fullflexible,
+   	tabsize=2,                       % sets default tabsize to 2 spaces
+   	captionpos=b, 				% sets the caption-position to bottom
+	breakatwhitespace=false,% sets if automatic breaks should only happen at whitespace
+  	breaklines=true,              % sets automatic line breaking
+   	title=\lstname                 % show the filename of files included with \lstinputlisting; also try caption instead of title
+    escapeinside={},         		% if you want to add LaTeX within your code
+    keywordstyle=\ttfamily\color{midnightblue}\itshape, % keyword style
+	morekeywords={} 
+	}	
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Common listing def - JAVA
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -767,8 +864,11 @@ Unidade Curricular de \@course \\da \@majorfield}
 %for code in file
 % usage \lstfromfile{language}{caption}{label}{path}
 \newcommand{\lstfromfile}[5]
-{	\lstinputlisting[language=#1,basicstyle=\small\tt,frame=tb,captionpos=b,commentstyle=\color{lstCommentsColor},stringstyle=\color{lstStringColor},keywordstyle=\color{lstKeywordsColor}\bfseries,caption=#2,label={#3},tabsize=2,#5]{#4}
+{	\lstinputlisting[language=#1,basicstyle=\small\tt,frame=tb,captionpos=b,
+commentstyle=\color{lstCommentsColor},stringstyle=\color{lstStringColor},
+keywordstyle=\color{lstKeywordsColor}\bfseries,caption=#2,label={#3},tabsize=2,#5]{#4}
 }
+
 %define java language
 \lstset{ %
 language=java,                % choose the language of the code
