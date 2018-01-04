@@ -26,7 +26,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \documentclass[
-	rpt,			% Technical Report 
+	rpt,			%  rpt, preprpt - Technical Report or PrepTechnical Report
 	pt,			% (*) pt, en - languages 
 	twoside,	% (*) twoside, oneside - single or double sided printing
 	12pt,		% (*) 12pt, 11pt, 10pt - use font size
@@ -193,7 +193,11 @@ morestring=[b]",
 
 %=========================================================
 %% Always print the table of contents
-\tableofcontents 
+\addtocontents{toc}{\protect\setcounter{tocdepth}{-1}}
+\tableofcontents
+\addtocontents{toc}{\protect\setcounter{tocdepth}{3}}
+%
+ 
 %
 %% Print other lists of contents according to instructions given above
 \printotherlists
