@@ -8,7 +8,7 @@ https://github.com/matpato/thesisisel.
 
 	\documentclass[
 		rpt,		%  rpt, preprpt - Technical Report or Preparatory Technical Report
-		pt,			% (*) pt, en - languages 
+		pt,		% (*) pt, en - languages 
 		twoside,	% (*) twoside, oneside - single or double sided printing
 		12pt,		% (*) 12pt, 11pt, 10pt - use font size
 		a4paper,	% the paper size/format
