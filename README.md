@@ -33,7 +33,7 @@ https://github.com/matpato/thesisisel.
 
 2. Description
 
-thesisisel This is the main directory and includes:
+reportisel This is the main directory and includes:
 
 	2.1 Appendixes: Directory with tex files with a section or table of subsidiary matter at the end of a book or document;
 	2.2 Logo: Directory with Faculty logos;
