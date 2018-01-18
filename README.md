@@ -2,7 +2,7 @@
 
 Template for bachelor report written in LaTex
 
-<img src="/images/screen_demoHowtoUseLatex.png" width=50% >
+<img src="/thesisisel/images/screen_demoHowtoUseLatex.png" width=50% >
 
 [Demo: click here](https://iselpt-my.sharepoint.com/personal/mpato_deetc_isel_pt/_layouts/15/guestaccess.aspx?docid=11ccdcf4547be49078043f55171a0a36e&authkey=AcjY5MHfh2kWs0ncUUVFUWg&e=6hM88v)
 
