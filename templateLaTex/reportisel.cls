@@ -80,6 +80,15 @@
 
 \LoadClass{book}
 
+\RequirePackage[
+			breaklinks = true,
+			colorlinks,
+			pdfdisplaydoctitle,
+			citecolor=mydarkblue,
+			linkcolor=black,
+			urlcolor=mydarkblue,
+			pagebackref]{hyperref} 
+			
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% PACKAGES
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -101,17 +110,29 @@
 % fonts and symbols; adds the \eqref command for citing equations. I prefer the style
 % "(x.xx)" for referering to an equation than to use "equation x.xx".
 
-%\RequirePackage{amsmath,amsfonts,amssymb,amsthm,verbatim, mathabx} 
+\usepackage{txfonts} 
+  \let\iint\relax 
+  \let\iiint\relax 
+  \let\iiiint\relax 
+  \let\idotsint\relax 
+\usepackage{amsmath, amssymb, amsfonts, verbatim, mathabx}
 
+% underline  
+\usepackage{ulem}
+
+% Provides the inparaenum environment (with an optional formatting specification in square brackets)
+\usepackage{paralist} 
+  
+\newcounter{saveenumi}
+\newcommand{\seti}{\setcounter{saveenumi}{\value{enumi}}}
+\newcommand{\conti}{\setcounter{enumi}{\value{saveenumi}}}
+% Beautiful simple tables
+\usepackage{booktabs}
 \RequirePackage{csquotes}
 \RequirePackage{babel}
-
 \RequirePackage[toc]{appendix}
 
-% \RequirePackage{tabularx}
- 
 \RequirePackage{ifthen}
-
 \RequirePackage{titlesec}           % To format the headings
 \RequirePackage{fancyhdr}        % Headings configuration
 
@@ -119,39 +140,31 @@
 \RequirePackage{setspace}           % One-and-half spacing
 \onehalfspacing
 
+%======================================================================
+% General styles
 %\RequirePackage{mathptmx}
 \RequirePackage[scaled]{helvet}
 \RequirePackage{courier}
 \RequirePackage{palatino}
+\usepackage{xmpincl}
+\usepackage[a-1b]{pdfx}
 
-%\usepackage{multicol}
-%\usepackage{minted}
-
+%======================================================================
 \usepackage{ifpdf}		% This is now the recommended way for checking for PDFLaTeX:
 \ifpdf
 	\RequirePackage[pdftex]{graphicx}
 	\DeclareGraphicsExtensions{.pdf, .png, .jpg, .tif}
-	\RequirePackage[pdftex,usenames,dvipsnames]{xcolor}
+	\RequirePackage[pdftex,usenames,dvipsnames]{color}
 	\definecolor{mydarkblue}{rgb}{0.0,0.08,0.45}
-	\RequirePackage[pdftex,
-		breaklinks = true,
-		colorlinks,
-		pdfdisplaydoctitle,
-		citecolor=mydarkblue,
-		linkcolor=black,
-		urlcolor=mydarkblue]{hyperref}
+	
 	\else
 		\RequirePackage{graphicx}
 		\DeclareGraphicsExtensions{.eps, .png, .jpg}
-		\RequirePackage[usenames,dvipsnames]{xcolor}
+		\RequirePackage[usenames]{color}
 		\definecolor{mydarkblue}{rgb}{0.0,0.08,0.45}
-		\RequirePackage[breaklinks = true,
-			colorlinks,
-			pdfdisplaydoctitle,
-			citecolor=mydarkblue,
-			linkcolor=black,
-			urlcolor=mydarkblue]{hyperref}
+		%or, 
 \fi
+
 
 %====================================================================
 % PACKAGE hyperref
@@ -160,13 +173,13 @@
 % Some MiKTeX distributions have faulty PDF creators in which case this package will not work correctly
 % Long live Linux :D
 \hypersetup{ a4paper=true,
-             pdftitle={ },
-             pdfauthor={ },
-             pdfsubject={ },
+%             pdftitle={ },
+%             pdfauthor={ },
+%             pdfsubject={ },
              pdfcreator={Matilde Pato},
-             pdfkeywords={ }
+%             pdfkeywords={ }
              }
-%
+
 \RequirePackage[top=3cm,
 	bottom=3cm,
 	inner=3.5cm,
@@ -566,6 +579,7 @@ Unidade Curricular de \@course \\da \@majorfield}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage[final]{listings}
+\newcommand*\lstinputpath[1]{\lstset{inputpath=#1}}
 \usepackage{listingsutf8}
 \usepackage[figure,table,lstlisting]{totalcount}
 
@@ -672,68 +686,69 @@ Unidade Curricular de \@course \\da \@majorfield}
 \fontsize{10}{12.2}
 \selectfont
 \textbf{\@theday ~ -- ~ \@themonth ~ -- ~  \@theyear}
+\cleardoublepage %\newpage
 
-\pagebreak
+%\pagebreak
+%
+%\begin{minipage}{0.3\textwidth}
+%% Put logo
+%	\logo{\@universitylogo}
+%\end{minipage}
+%
+%
+%\vspace{0.25cm}	
+%% Name of Department
+%	\fontsize{14}{16.8}
+%	\selectfont
+%	\textbf{\@department}
+%
+%
+%\vspace{0.65cm}
+%% Title of Dissertation
+%	\fontsize{18}{21.6}
+%	\selectfont
+%	\textbf{\@title}\\[0.75cm]
+%
+%\vspace{1.5cm}	
+%% Name of Candidate
+%	\fontsize{14}{16.8}
+%	\selectfont
+%	\textbf{
+%		\ctable[
+%			cap=,
+%			caption=,
+%			label=,
+%			pos=h,
+%			maxwidth=1\linewidth,
+%			doinside=\hspace*{0.1cm},
+%		]{rX}{}{ 
+%		\toprule
+%		\printauthor[]{1}\\
+%		\ifnum \@theauthorcount > 1		
+%		\midrule	
+%		\printauthor[]{2}\\
+%		\ifnum \@theauthorcount > 2
+%		\midrule	
+%		\printauthor[]{3}
+%		\fi\fi
+%}}
 
-\begin{minipage}{0.3\textwidth}
-% Put logo
-	\logo{\@universitylogo}
-\end{minipage}
-
-
-\vspace{0.25cm}	
-% Name of Department
-	\fontsize{14}{16.8}
-	\selectfont
-	\textbf{\@department}
-
-
-\vspace{0.65cm}
-% Title of Dissertation
-	\fontsize{18}{21.6}
-	\selectfont
-	\textbf{\@title}\\[0.75cm]
-
-\vspace{1.5cm}	
-% Name of Candidate
-	\fontsize{14}{16.8}
-	\selectfont
-	\textbf{
-		\ctable[
-			cap=,
-			caption=,
-			label=,
-			pos=h,
-			maxwidth=1\linewidth,
-			doinside=\hspace*{0.1cm},
-		]{rX}{}{ 
-		\toprule
-		\printauthor[]{1}\\
-		\ifnum \@theauthorcount > 1		
-		\midrule	
-		\printauthor[]{2}\\
-		\ifnum \@theauthorcount > 2
-		\midrule	
-		\printauthor[]{3}
-		\fi\fi
-}}
-
-
-\vspace{0.75cm}
-% Degree
-	\fontsize{12}{13}
-	\selectfont
-	\@presentationtext
-	
-\vfill\vfill
-
-\vfill\vfill\vfill
-
-% Date
-\fontsize{10}{12.2}
-\selectfont
-\textbf{\@themonth, \@theyear}
-	
+%
+%\vspace{0.75cm}
+%% Degree
+%	\fontsize{12}{13}
+%	\selectfont
+%	\@presentationtext
+%	
+%\vfill\vfill
+%
+%\vfill\vfill\vfill
+%
+%% Date
+%\fontsize{10}{12.2}
+%\selectfont
+%\textbf{\@themonth, \@theyear}
+%	
 \end{center}
 \restoregeometry
 \cleardoublepage %\newpage
@@ -779,7 +794,6 @@ Unidade Curricular de \@course \\da \@majorfield}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Table of contents
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\setcounter{tocdepth}{2}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Sectioning
@@ -814,15 +828,84 @@ Unidade Curricular de \@course \\da \@majorfield}
 \usepackage{breakurl}
 \def\UrlBreaks{\do\/\do-}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Common listing def: R and Java example
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%************** PACKAGES ***************
+\usepackage{listings}
+\usepackage{color}
+
+%************** STYLES ***************
 % == Color Definitions ===
-\definecolor{olivegreen}    {cmyk}{0.64, 0 , 0.95, 0.40}
-\definecolor{dkgreen}{rgb}{0,0.6,0}	
-\definecolor{midnightblue}  {cmyk}{0.98, 0.13, 0 , 0.43}
-%%    
+
+\definecolor{ForestGreen}    {cmyk}{0.76, 0 , 0.76, 0.45}
+\definecolor{BrickRed}{cmyk}{0,0.73,0.69,0.28}	
+\definecolor{MidnightBlue}  {cmyk}{0.98, 0.78, 0 , 0.56}
+% Listings
+\usepackage{fancyvrb}
+\colorlet{lstKeywordsColor}{MidnightBlue}
+\colorlet{lstKeywordsAltColor}{BrickRed}
+\colorlet{lstCommentsColor}{ForestGreen}
+\colorlet{lstStringColor}{BrickRed}
+
+
+%Javalst
+% Usage: \begin{javalst}[Caption]{Label}
+\lstnewenvironment{javalst}[2][]%
+{
+	\lstset{
+	language=Java,
+	basicstyle=\small\tt,
+	frame=tb,
+	captionpos=b,
+	caption=#1,
+	label={lst:#2},
+	tabsize=2}
+	}%
+{}%
+
+%XMLlst
+\lstnewenvironment{xmllst}[2][]%
+{
+	\lstset{
+	language=XML,
+	basicstyle=\small\tt,
+	frame=tb,
+	captionpos=b,
+	caption=#1,
+	label={lst:#2},
+	tabsize=2}
+	}%
+{}%
+
+%lst
+\lstnewenvironment{lst}[2][]%
+{\
+	lstset{
+		basicstyle=\footnotesize\tt,
+		frame=tb,
+		captionpos=b,
+		caption=#1,
+		label={lst:#2},
+		tabsize=2}
+		}%
+{}
+
+\renewcommand{\lstlistingname}{Código}
+
+% ************* Continue line numbers in listings package  *************
+%  Always I forget this so I created some aliases
+
+\def\ContinueLineNumber{
+	\lstset{
+		firstnumber = last
+		}
+	}
+\def\StartLineAt#1{
+	\lstset{
+		firstnumber = #1
+		}
+	}
+\let\numberLineAt\StartLineAt
+
 \lstset{
 literate=%
 % Latin
@@ -840,123 +923,49 @@ literate=%
   {€}{{\euro}}1 {£}{{\pounds}}1 {«}{{\guillemotleft}}1
   {»}{{\guillemotright}}1 {ñ}{{\~n}}1 {Ñ}{{\~N}}1 {¿}{{?`}}1
 }  
-%% R     
-\lstset{ 
-	language = R, 					% the language of the code
-	basicstyle = \scriptsize\ttfamily,  % the size of the fonts that are used for the code
-	commentstyle = \ttfamily\color{dkgreen}, % comment style
-    numbers = left,     % where to put the line-numbers; possible values are (none, left, right)
-   	numberstyle = \ttfamily\color{gray}, 
-	stepnumber = 2,  % the step between two line-numbers. If it's 1, each line will be numbered
-    numbersep = 5pt, 				% how far the line-numbers are from the code	
-    xleftmargin = \parindent,
-    backgroundcolor = \color{white},  % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
-	showspaces = false,   % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
-  	showstringspaces = false,  % underline spaces within strings only
-  	showtabs = false,               % show tabs within strings adding particular underscores
-	stringstyle = \ttfamily, 		 % typewriter type for strings
-	frame = single, 					 % adds a frame around the code
-	rulesepcolor = \color{black},
-	columns = fullflexible,
-   	tabsize = 2,                       % sets default tabsize to 2 spaces
-   	captionpos = b, 				% sets the caption-position to bottom
-	breakatwhitespace = false,% sets if automatic breaks should only happen at whitespace
-  	breaklines = true,              % sets automatic line breaking
-   	title = \lstname                 % show the filename of files included with \lstinputlisting; also try caption instead of title
-    escapeinside = {},         		% if you want to add LaTeX within your code
-    keywordstyle = \ttfamily\color{midnightblue}\itshape, % keyword style
-	morekeywords = {},
-	inputencoding=latin1 
-	}	
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Common listing def - JAVA
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand*\thelstnumber{\oldstylenums{\the\value{lstnumber}}}
 
-% Listings
-%\usepackage{fancyvrb}
-\colorlet{lstKeywordsColor}{MidnightBlue}
-\colorlet{lstKeywordsAltColor}{BrickRed}
-\colorlet{lstCommentsColor}{ForestGreen}
-\colorlet{lstStringColor}{BrickRed}
-% Usage: \begin{javalst}[Caption]{Label}
-\lstnewenvironment{javalst}[2][]%
-{
-\lstset{
-	language = java,
-	basicstyle = \small\tt,
-	frame = tb,
-	captionpos = b,
-	caption = #1,
-	label = {lst:#2},
-	tabsize = 2}}%
-{}%
+% ---------------------- TYPESETTING ---------------------- %
 
-\lstnewenvironment{xmllst}[2][]%
-{
-\lstset{
-	language = XML,
-	basicstyle = \small\tt,
-	frame = tb,
-	captionpos = b,
-	caption = #1,
-	label = {lst:#2},
-	tabsize = 2}}%
-{}%
-\lstnewenvironment{lst}[2][]%
-{
-\lstset{
-	basicstyle = \footnotesize\tt,
-	frame = tb,
-	captionpos = b,
-	caption = #1,
-	label = {lst:#2},
-	tabsize = 2}}%
-{}%
-
-% For inline code
-\newcommand{\codejava}[1]{
-	\lstinline[
-		basicstyle = \tt,%
-		keywordstyle = \color{lstKeywordsColor}\bfseries,%
-		commentstyle = \color{lstCommentsColor},%
-		stringstyle = \color{lstStringColor},% 		
-		language = Java]|#1|}
-
-%for code in file
-% usage \lstfromfile{language}{caption}{label}{path}
-\newcommand{\lstfromfile}[5]{				
-	\lstinputlisting[language=#1,
-	     basicstyle = \small\tt,
-		frame = tb,
-		captionpos = b,
-		commentstyle = \color{lstCommentsColor},
-		stringstyle = \color{lstStringColor},
-		keywordstyle = \color{lstKeywordsColor}\bfseries,
-		caption = #2,
-		label = {#3},
-		tabsize = 2,#5]{#4}
-}
-
-%define java language
 \lstset{ %
-	language = java,            % choose the language of the code
-	basicstyle = \footnotesize\ttfamily,       % the size of the fonts that are used for the code
-	numbers = left,              % where to put the line-numbers
-	numberstyle = \tiny,      % the size of the fonts that are used for the line-numbers
-	stepnumber = 1,            % the step between two line-numbers. If it is 1 each line will be 		numbered
-	numbersep = 5pt,          % how far the line-numbers are from the code
-	backgroundcolor = \color{white},  % choose the background color. You must add 		\usepackage{color}
-	showspaces = false,       % show spaces adding particular underscores
-	showstringspaces = false,      % underline spaces within strings
-	showtabs = false,           % show tabs within strings adding particular underscores
-	frame = single,              % adds a frame around the code
-	tabsize = 2,                   % sets default tabsize to 2 spaces
-	captionpos = b,             % sets the caption-position to bottom
-	breaklines = true,          % sets automatic line breaking
-	breakatwhitespace = false,    % sets if automatic breaks should only happen at whitespace
-	escapeinside = {\%*}{*)},          % if you want to add a comment within your code
-	stringstyle = \color{lstStringColor},
-	keywordstyle = \color{lstKeywordsColor}\bfseries,
-	commentstyle = \color{lstCommentsColor}\itshape,
+  backgroundcolor=\color{white},   % choose the background color
+  basicstyle=\footnotesize,        % size of fonts used for the code
+  breaklines=true,                 % automatic line breaking only at whitespace
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\color{lstCommentsColor},    % comment style
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  keywordstyle=\color{lstKeywordsColor}\bfseries,       % keyword style
+  stringstyle=\color{lstStringColor},     % string literal style   
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  numberstyle=\scriptsize, % the style that is used for the line-numbers
 }
+
+% ************* FOR  CODE IN FILE ************* 
+% usage \lstfromfile{language}{linerange}{caption}{label}{othersinsideoflstinoputlisting}{path}
+\newcommand{\lstfromfile}[6]{	
+	\lstinputlisting[
+		language=#1,
+		linerange={#2},
+		basicstyle=\small\tt,
+		frame=tb,
+		captionpos=b,
+		caption=#3,
+		label={lst:#4},
+		tabsize=2,
+		#5] {#6}
+}
+
+% ************* FOR INLINE CODE ************* 
+% usage \code{language}{code}
+\newcommand{\code}[2]{
+	\lstinline[
+		basicstyle=\tt,%
+		keywordstyle=\color{lstKeywordsColor}\bfseries,%
+		commentstyle=\color{lstCommentsColor},%
+		stringstyle=\color{lstStringColor},% 		
+		language=#1
+		]
+		|#2|
+		}

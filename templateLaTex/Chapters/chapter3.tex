@@ -7,7 +7,7 @@ Este capítulo irá mostrar como pode inserir tabelas, figuras e/ou listagens. C
 \section{Tabelas} % (fold)
 \label{sec:inserting_tables}
 
-Some notes are important to followed, such as present in Table \ref{tab:results}: 
+Some notes are important to followed, such as present in \tablename~  \ref{tab:results}: 
 \begin{inparaenum}[i)]
 	\item Not defined vertical lines;
 	\item The legend must be on top;
@@ -59,7 +59,7 @@ Armadillo & frozen & 8.99 \\
 \label{ssec:floats_figures_and_captions}
 
  
-There are two different ways to place two figures/tables side-by-side. The subfigure package provides functionality to arrange figures and tables next to each other, within the usual figure-floating-environment. Subfigure will alphabetically number your subfigures and you have access to the complete reference as usual through \verb!\ref{fig:subfig1}!, Figure \ref{fig:figura-completa}, or to the letter only through \verb!\subref{fig:subfig1}!, ~\subref{fig:ra-vectorial}, or either \verb!\ref{fig:ra-raster}!, Figure \ref{fig:ra-raster}.
+There are two different ways to place two figures/tables side-by-side. The subfigure package provides functionality to arrange figures and tables next to each other, within the usual figure-floating-environment. Subfigure will alphabetically number your subfigures and you have access to the complete reference as usual through \verb!\ref{fig:subfig1}!, \figurename~\ref{fig:figura-completa}, or to the letter only through \verb!\subref{fig:subfig1}!, ~\subref{fig:ra-vectorial}, or either \verb!\ref{fig:ra-raster}!,  \figurename~\ref{fig:ra-raster}.
 
 \begin{figure}[H]
 	\centering
@@ -81,10 +81,12 @@ There are two different ways to place two figures/tables side-by-side. The subfi
 
 Using the package listings you can add non-formatted text as you would do with \verb!\begin{verbatim}! but its main aim is to include the source code of any programming language within your document, or inline with 
 \verb!\codejava{int i;}.!
-If you wish to include pseudocode or algorithms see \href{http://en.wikibooks.org/wiki/LaTeX/Algorithms_and_Pseudocode}{\nolinkurl{LaTeX/Algorithms\_ and\_Pseudocode}}, as Listing ~\ref{lst:Calculadora}.
+If you wish to include pseudocode or algorithms see \url{http://en.wikibooks.org/wiki/LaTeX/Algorithms_and_Pseudocode}, as \listingname ~\ref{lst:Calculadora}.
 \vskip1em
-%\lstfromfile{language}{caption}{label}{path}
-\lstfromfile{java,linerange={3-11}}{Opera\c{c}\~{o}es elementares de uma Calculadora}{lst:Calculadora}{\codefiles{Calculadora.java}}{showlines=true,morekeywords={tran,begin,return},basicstyle=\footnotesize\ttfamily}
+
+%  \lstfromfile{language}{linerange}{caption}{label}{othersinsideoflstinoputlisting}{path}
+
+\lstfromfile{java}{1-8}{Opera\c{c}\~{o}es elementares de uma Calculadora}{Calculadora}{showlines=true,morekeywords={begin,System,out,print},numbers=left, firstnumber=1}{Calculadora.java}
 
 
-\centering{\textbf{Written by Matilde Pós-de-Mina Pato\footnote{O autor escreve segundo o AO}, \\2017 September -  version 1.1}}
+\centering{\textbf{Written by Matilde Pós-de-Mina Pato\footnote{O autor escreve segundo o AO}, \\2019 January -  version 2.0}}

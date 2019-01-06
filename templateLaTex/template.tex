@@ -3,6 +3,7 @@
 %%
 %% Version 20170313 (Mar 2017) v1.0
 %% Version 20170313 (Sep 2017) v1.1
+%% Version 20190105 (Jan 2019) v2.0
 
 %% Instituto Superior de Engenharia de Lisboa
 %% Instituto Politécnico de Lisboa
@@ -33,48 +34,11 @@
 	a4paper,	% the paper size/format
 	utf8,			% (*) utf8, latin1	- Text encoding: Linux, Mac or Windows
 	hyperref = true,  % Hyperlinks in citations: true(*) false
-	listof=totoc
+	listof=totoc,
 	]{reportisel} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%  BEGINING OF USER COSTUMIZATION
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%=========================================================
-% Additional packages you may want to use (comment those not needed)
-%=========================================================
-
-% To enable customizble enumerates
-\usepackage{paralist}
-
-% Beautiful simple tables
-\usepackage{booktabs}
-
-% Use colors in background of table cells
-%\usepackage{colortbl}
-
-% Sort citations - ONLY if using "plain" style, otherwise keep commented
-%\usepackage[sort]{cite}
-
-%=========================================================
-% PACKAGE listings
-%=========================================================
-%
-% The ‘listings’ package is loaded at the beginning of a LATEX file in the preamble
-% Here is an example of my \lset{} declaration for ‘R’ code. 
-% Then, after having including this (also in the preamble), I simply include my external ‘R’ files. 
-% They can be included using an:
-% \include{ } - like interface to the external files;
-% by using the command \lstinputlisting{./code.R} to include the code from the file code.R which % is located in the same directory as the ‘LATEX’ source file.
-%
-
-\lstdefinelanguage{custom}
-{
-morekeywords={public, void},
-sensitive=false,
-morecomment=[l]{//},
-morecomment=[s]{/*}{*/},
-morestring=[b]",
-}
 
 % To register TODO notes in the text
 \usepackage[textsize=footnotesize]{todonotes}
@@ -91,23 +55,19 @@ morestring=[b]",
 \usepackage{float}		% Improves the interface for defining floating objects such as figures and tables
 %
 %
-%=========================================================
+%====================================================================
 % Standard configuration for user included packages
-%=========================================================
+%====================================================================
+%\usepackage{sty/code}
 
 % Where to look for figures
 \graphicspath{{Logo/}{Chapters/img/}} 
-
 % Where to find code scripts files
-\newcommand{\codefiles}[1]{Chapters/scripts/#1}
-% syntax: \lstinputlisting[]{\codefiles{name.ext}}
-
+\lstinputpath{Chapters/scripts}
+\newcommand{\listingname}{Listagem}
 % Where to find Chapters files
 \newcommand{\chapterfiles}[1]{Chapters/#1}
 % syntax: \include{\chapterfiles{name.tex}}
-
-% Force word hyphenation
-\hyphenation{do-cu-ment}
 
 %=========================================================
 % Some default values that you may whish to override
@@ -193,11 +153,8 @@ morestring=[b]",
 
 %=========================================================
 %% Always print the table of contents
-\addtocontents{toc}{\protect\setcounter{tocdepth}{-1}}
+\setcounter{tocdepth}{1}
 \tableofcontents
-\addtocontents{toc}{\protect\setcounter{tocdepth}{3}}
-%
- 
 %
 %% Print other lists of contents according to instructions given above
 \printotherlists
