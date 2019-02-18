@@ -27,7 +27,7 @@ O limite de páginas para cada UC será estipulado pelo docente e pode contempla
 \item[Índice] Indique as páginas dos títulos e subtítulos, figuras ou tabelas. O código que suporta algum parágrafo deve constar no índice respectivo, de Listagens.
 \item[Introdução] Contextualize o tema e indique o objectivo de estudo.
 \item[Desenvolvimento] Descreva as definições, modelos e teorias suportados por referências bibliográficas. 
-\item[Conclusão] Sintetize os aspectos relevantes,
+\item[Conclusão] Sintetize os aspectos relevantes.
 \item[Bibliografia] Escreva todas as referências indicadas no texto.
 \item[Anexos] Use os anexos para colocar outras informações que considere oportunas, mas não relevantes o suficiente para colocar no corpo do documento. 
 \end{enumerate}
@@ -39,10 +39,11 @@ As referências são listadas pela ordem alfabética do apelido dos autores e de
 \item[Livros] Deve constar o nome original de um livro escrito em língua estrangeira. Pede-se que seja inserido as páginas consultadas. 
 \item[websites] Os sítios da internet consultados também devem constar nas referências. Pede-se que seja introduzido o dia de consulta do mesmo.
 \item[Artigos] Deve citar aqueles que se encontram indexados e submetidos a revisão independente. No instituto Thomson Reuters são fornecidas listas de toda a bibliografia que obedece a esse grau de exigência.
-\item[Trabalhos] Se o trabalho citado não tiver data, coloque o nome do autor seguido da indicação ``sem data''. Se a citação for relativa a uma comunicação pessoal, então faça-o do modo seguinte: M. Mjhdsh (comunicação pessoal, 13 de Março 2017). Noutros trabalhos não publicados, deve constar a seguinte informação: ``Dissertação (ou, Relatório) de Mestrado (ou Doutoramento, ou Final de Curso) não publicada(o). 
+\item[Trabalhos] Se a citação for relativa a uma comunicação pessoal, então faça-o do modo seguinte: M. Mjhdsh (comunicação pessoal, 13 de Março 2017). Noutros trabalhos deve constar a seguinte informação: ``Dissertação (ou, Relatório) de Mestrado (ou Doutoramento, ou Final de Curso) não publicada(o). 
 \end{enumerate}
 
 Por uma questão de simplificação, pode recorrer ao  Google Académico\footnote{scholar.google.pt/} e retirar a informação que consta no sítio \texttt{Citar} no formato BibTeX e inserir no ficheiro \texttt{bibliography.bib}. Por exemplo:
+\footnotesize
 \begin{verbatim}
 @book{gustavii2016write,
   title={How to write and illustrate a scientific paper},
@@ -51,3 +52,69 @@ Por uma questão de simplificação, pode recorrer ao  Google Académico\footnot
   publisher={Cambridge University Press}
 }
 \end{verbatim}
+
+\paragraph{Relatórios de Sistemas de Informação}
+
+Caracteres especiais para Álgebra Relacional
+
+\begin{table}[!htb]
+\begin{minipage}{.5\textwidth}
+ \caption{Simbolos lógicos e outros}
+ \centering  
+\begin{tabular}{|l|c|r|}
+\hline
+Logical AND & 	$\wedge$ \\
+Logical OR & 	$\vee$ \\
+Logical NOT & 	$\neg$ \\
+null & 			$\omega$ \\
+\hline
+\end{tabular}
+\vskip1em
+\caption{Operadores unários}
+ \centering  
+\begin{tabular}{|l|c|r|}
+\hline
+selecção &  $\select_{cname<cname2} E$ \\
+projecção &  $\project_{cname} E$ \\
+função de agregação &  $_{g_1,g_2,\ldots} \aggregatefn_{h_1,h_2,\ldots,h_m}$ \\
+\hline
+\end{tabular}
+
+\end{minipage}%
+\quad
+\begin{minipage}{.5\textwidth}
+\centering
+\caption{Operadores binários}
+\begin{tabular}{|l|c|r|}
+\hline
+união & 			\union \\
+intersecção & 		\intersection \\
+diferença & 		- \\
+produto cartesiano & \cross \\
+divisão & 			$\div$ \\
+renomeação & 			$\rho$ \\
+junção natural& 		$\bowtie$ \\
+junção theta & 		$\bowtie_{\theta}$ \\
+semi-junção à esquerda & 	$\leftsemijoin$ \\
+semi-junção à direita & 	$\rightsemijoin$ \\ 
+junção externa à esquerda & 	$\leftouterjoin$ \\
+junção externa à direita & 	$\rightouterjoin$ \\
+junção externa completa & 	$\fullouterjoin$ \\
+anti-junção & 			? \\
+\hline
+\end{tabular}
+    \end{minipage} 
+\end{table}
+
+Exemplo (\textit{Your \LaTeX  ~skills are likely superior to mine!}):
+\begin{displaymath}
+Grades \leftarrow \project_{(students.ssn, students.name, grades.grade)} \\
+(\select_{students.ccn = grades.ccn \wedge grades.assignment = 1} \\
+(students \cross grades)) \\
+\end{displaymath}
+\vskip-1em
+\begin{eqnarray*}
+Grades & \leftarrow & \project_{(students.ssn, students.name, grades.grade)}  \\
+       &            &(\select_{(students.ssn, students.name, grades.grade)}  \\
+       &            &          (students \cross grades)) 
+\end{eqnarray*}
