@@ -88,6 +88,6 @@ The template presents some instructions how to write a report, or the major conc
 
 	Matilde Pós-de-Mina Pato
 
-Last update: January, 5th 2019 
+Last update: February, 18th 2019 
 
 **this package and template are not official for ISEL/IPL**
