@@ -43,6 +43,7 @@
 % To register TODO notes in the text
 \usepackage[textsize=footnotesize]{todonotes}
 \setlength{\marginparwidth}{1.5cm}
+%%%%%% Indexing %%%%%%
 
 %=========================================================
 %% FIGURES and TABLES
@@ -152,14 +153,15 @@
 % use the document main language and second the foreign language
 \printabstract
 
-%=========================================================
+%%=========================================================
 %% Always print the table of contents
-\setcounter{tocdepth}{1}
+\addtocontents{toc}{\protect\setcounter{tocdepth}{-1}}
 \tableofcontents
+\addtocontents{toc}{\protect\setcounter{tocdepth}{3}}
 %
 %% Print other lists of contents according to instructions given above
-\printotherlists
-%
+\printotherlists 
+%%
 %=========================================================
 %  Print Document Chapters
 %=========================================================
