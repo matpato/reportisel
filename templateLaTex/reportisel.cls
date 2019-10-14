@@ -246,9 +246,13 @@
 
 \gdef\@singlemauthorstr{Autor}
 \gdef\@manymauthorstr{Autores}
+\gdef\@singlefauthorstr{Autora}
+\gdef\@manyfauthorstr{Autoras}
 
 \gdef\@singlemadviserstr{Professor}
 \gdef\@manymadviserstr{Professores}
+\gdef\@singlefadviserstr{Professora}
+\gdef\@manyfadviserstr{Professoras}
 
 \gdef\@bachelordissertationstr{Relatório}
 
