@@ -2,17 +2,35 @@
 %%% reportisel.cls
 %%% ISEL/IPL Report document class
 %%%
-%%% By Matilde Pós-de-Mina Pato (mpato@deetc.isel.ipl.pt)
+%%% By Matilde Pós-de-Mina Pato (mpato@deetc.isel.pt)
 %%% Version1.0 of March 2017
 %%% Version2.0 of January 2018
+%%% Version2.1 of October 2019
+%%%
+%%% This work is licensed under the 
+%%% Creative Commons Attribution-NonCommercial 4.0 International License. 
+%%% To view a copy of this license, 
+%%% visit http://creativecommons.org/licenses/by-nc/4.0/.
+%%
 %%% This template is vaguely based on a template from the
 %%%    thesisisel.cls
 %%%	   ISEL/IPL Dissertation document class (NOT OFFICIAL)
 %%%
-%%% BUGS and SUGGESTIONS: please send email to "mpato@deetc.isel.ipl.pt"
-%%% CONTRIBUTERS are welcome. Please contact "mpato@deetc.isel.ipl.pt"
+%%% BUGS and SUGGESTIONS: please send email to "mpato@deetc.isel.pt"
+%%% CONTRIBUTERS are welcome. Please contact "mpato@deetc.isel.pt"
 %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING
+%% WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING
+%% 
+%%   You SHOULD NOT change this file (you are playing with fire!)
+%% 
+%% WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING
+%% WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{reportisel}[2017/03/13 ISEL report template]
 
@@ -79,7 +97,6 @@
 \ProcessOptions
 
 \LoadClass{book}
-
 \RequirePackage[
 			breaklinks = true,
 			colorlinks,
@@ -230,12 +247,12 @@
 
 %% Add ISEL's logo  in frontpage
 \newcommand{\logo}[1]{
-\parbox[t][0.15\paperheight]{0.1\paperwidth}{%
-\vfill
-\raggedleft% or better \raggedleft see comments below
-%\centering
-\includegraphics[scale=0.5]{#1}%
-\vfill
+	\parbox[t][0.15\paperheight]{0.1\paperwidth}{%
+	\vfill
+	\raggedleft% or better \raggedleft see comments below
+	%\centering
+	\includegraphics[scale=0.5]{#1}%
+	\vfill
 }}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -248,7 +265,10 @@
 \gdef\@manymauthorstr{Autores}
 
 \gdef\@singlemadviserstr{Professor}
+\gdef\@singlefadviserstr{Professora}
 \gdef\@manymadviserstr{Professores}
+\gdef\@manyfadviserstr{Professoras}
+
 
 \gdef\@bachelordissertationstr{Relatório}
 
@@ -281,17 +301,15 @@ Unidade Curricular de \@course \\da \@majorfield}
   	} 
 	\def\lstlistlistingname{Listagens}
 	  	\addto{\captionsportuguese}{%
-			\renewcommand*{\lstlistlistingname}{Listagens}
+			\renewcommand*{\lstlistlistingname}{Lista de Listagens}
 			\renewcommand*{\lstlistingname}{Listagem}%
 	}
-	
+
 % English
 \else\if\@language1
   	\gdef\@notdefined{UNDEFINED}
   	\def\appendixname{Appendix}
 \fi\fi
-
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% CREATING A TITLE PAGE
@@ -889,7 +907,6 @@ Unidade Curricular de \@course \\da \@majorfield}
 		}%
 {}
 
-\renewcommand{\lstlistingname}{Código}
 
 % ************* Continue line numbers in listings package  *************
 %  Always I forget this so I created some aliases

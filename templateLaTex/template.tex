@@ -1,12 +1,16 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Template for writing reports
+%% ISEL/IPL Report document class
 %%
 %% Version 20170313 (Mar 2017) v1.0
 %% Version 20170313 (Sep 2017) v1.1
 %% Version 20190105 (Jan 2019) v2.0
-
-%% Instituto Superior de Engenharia de Lisboa
-%% Instituto Politécnico de Lisboa
+%% Version 20191020 (Oct 2019) v2.1
+%%
+%% This work is licensed under the 
+%% Creative Commons Attribution-NonCommercial 4.0 International License. 
+%% To view a copy of this license, 
+%% visit http://creativecommons.org/licenses/by-nc/4.0/.
 %%
 %% Project web page at https://github.com/matpato/reportisel
 %%
@@ -45,9 +49,9 @@
 \setlength{\marginparwidth}{1.5cm}
 %%%%%% Indexing %%%%%%
 
-%=========================================================
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% FIGURES and TABLES
-%=========================================================
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % To aggregate multiple figures in a single one with subfigures
 \usepackage{subfigure}
 
@@ -56,9 +60,9 @@
 \usepackage{float}		% Improves the interface for defining floating objects such as figures and tables
 %
 %
-%====================================================================
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Standard configuration for user included packages
-%====================================================================
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\usepackage{sty/code}
 %% Relational Algebra Operators 
 \usepackage{relationalAlgebra}
@@ -66,14 +70,13 @@
 \graphicspath{{Logo/}{Chapters/img/}} 
 % Where to find code scripts files
 \lstinputpath{Chapters/scripts}
-\newcommand{\listingname}{Listagem}
 % Where to find Chapters files
 \newcommand{\chapterfiles}[1]{Chapters/#1}
 % syntax: \include{\chapterfiles{name.tex}}
 
-%=========================================================
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Some default values that you may whish to override
-%=========================================================
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Identification: items prefixed with (*) are the default values, as defined in "defaults.tex"
 % (*)\university{Instituto Superior de Engenharia de Lisboa}
 % (*)\faculty{Instituto Politécnico de Lisboa}
@@ -85,7 +88,7 @@
 % (*)\onehalfspacing
 % \doublespacing
 
-%=========================================================
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Title of the report
 % USe "\\" to break the title into two or more lines
@@ -93,10 +96,10 @@
 \input{personaldataofreport}
 %% Title of Report + author(s) + professor + date
 
-%=========================================================
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% All the names inside braces below sould correspond to a file
 %%     with extension ".tex" and located in the "Chapters" folder
-%=========================================================
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Resume/summary text in Portuguese
 \ptabstractfile{resumo}
@@ -104,9 +107,9 @@
 % Resume/summary text in English
 \enabstractfile{abstract}
 
-%=========================================================
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % The Table of Contents is always printed. The other lists may be omited.
-%=========================================================
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Conditionally insert List of Figures, Tables and Code Listings
 \addlisttofrontmatter{\conditionalLoF} 	% The List of Figures. 
@@ -123,37 +126,38 @@
 % sintax: \appendixfile{file}
 %\appendixfile{appendix1}
 
-%=========================================================
-%%
-%%  END OF USER COSTUMIZATION
-%%
-%=========================================================
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
+%%==== DANGER ==== DANGER ==== DANGER ==== DANGER ==== DANGER ====
+%%==== DANGER ==== DANGER ==== DANGER ==== DANGER ==== DANGER ====
+%%==== DANGER ==== DANGER ==== DANGER ==== DANGER ==== DANGER ====
+%%
+%%   END OF USER COSTUMIZATION
+%%   Please do not change below this point!!! :)
+%%
+%%==== DANGER ==== DANGER ==== DANGER ==== DANGER ==== DANGER ====
+%%==== DANGER ==== DANGER ==== DANGER ==== DANGER ==== DANGER ====
+%%==== DANGER ==== DANGER ==== DANGER ==== DANGER ==== DANGER ====
 %
-%=========================================================
-%% Please do not change below this point!!! :)
-%=========================================================
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Begining of document
 \begin{document}
 
-%=========================================================
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Before main text
 \frontmatter
-
 %% The first front page. Repeats the front page twice 
 %% \Repeat{n-times}{\command}
 %\Repeat{1}{\frontpage}
 \frontpage
-%=========================================================
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% All the names inside braces below sould correspond to a file
 %%     with extension ".tex" and located in the "Chapters" folder
-%=========================================================
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Abstracts/resumes/summaries in two languages. The first abstract will
 % use the document main language and second the foreign language
 \printabstract
-
-%%=========================================================
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Always print the table of contents
 \addtocontents{toc}{\protect\setcounter{tocdepth}{-1}}
 \tableofcontents
@@ -162,45 +166,40 @@
 %% Print other lists of contents according to instructions given above
 \printotherlists 
 %%
-%=========================================================
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  Print Document Chapters
-%=========================================================
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%
 \printchapters
 %%
-%=========================================================
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  Print Bibliography
-%=========================================================
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%
 %\cleardoublepage
-
 % Include all references in .bib file, even non-cited ones...
 \nocite{*}
-
 % Produces the bibliography section when processed by BibTeX
-%=========================================================
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Bibliography style
-%=========================================================
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Replacement bibliography styles provided by 'natbib' package
 % (plainnat.bst, abbrvnat.bst, unsrtnat.bst )
 \bibliographystyle{plainnat} % > entries ordered alphabetically
-
 % External bibliography database file in the BibTeX format
 \cleardoublepage
 \bibliography{bibliography} % file "bibliography.bib"
 %\addcontentsline{toc}{chapter}{\bibname} % Add entry in the table of contents as chapter
-
 %%
-%=========================================================
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  Print appendixes, if any!  (optional)
-%=========================================================
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%
 \cleardoublepage
 \setcounter{page}{1} \pagenumbering{roman}
 \printappendixes 
 \cleardoublepage
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% End of document
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{document} 
