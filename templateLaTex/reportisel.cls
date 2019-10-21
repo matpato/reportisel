@@ -263,6 +263,8 @@
 
 \gdef\@singlemauthorstr{Autor}
 \gdef\@manymauthorstr{Autores}
+\gdef\@singlefauthorstr{Autora}
+\gdef\@manyfauthorstr{Autoras}
 
 \gdef\@singlemadviserstr{Professor}
 \gdef\@singlefadviserstr{Professora}
