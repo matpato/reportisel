@@ -91,3 +91,7 @@ The template presents some instructions how to write a report, or the major conc
 Last update: February, 18th 2019 
 
 **this package and template are not official for ISEL/IPL**
+
+# License
+
+[MIT](https://choosealicense.com/licenses/mit/)
