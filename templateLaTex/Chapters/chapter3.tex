@@ -60,19 +60,23 @@ Armadillo & frozen & 8.99 \\
 \label{ssec:floats_figures_and_captions}
 
  
-There are two different ways to place two figures/tables side-by-side. The subfigure package provides functionality to arrange figures and tables next to each other, within the usual figure-floating-environment. Subfigure will alphabetically number your subfigures and you have access to the complete reference as usual through \verb!\ref{fig:subfig1}!, \figurename~\ref{fig:figura-completa}, or to the letter only through \verb!\subref{fig:subfig1}!, ~\subref{fig:ra-vectorial}, or either \verb!\ref{fig:ra-raster}!,  \figurename~\ref{fig:ra-raster}.
+There are two different ways to place two figures/tables side-by-side.  More complicated figures with multiple images. You can do this using subfigure environments inside a figure environment. Subfigure will alphabetically number your subfigures and you have access to the complete reference as usual through \verb!\ref{fig:figurelabel}!, \figurename~\ref{fig:figura-completa}, or \figurename~\ref{fig:ra-raster} using \verb!\ref{fig:subfigurelabel}!.
 
-\begin{figure}[H]
+\begin{figure}[htbp]
 	\centering
-    \subfigure[Vectorial] {
+    \begin{subfigure}[b]{0.35\textwidth}
+    	\centering
+		\includegraphics[width=\textwidth]{ra-vectorial}
+		\caption{}
 		\label{fig:ra-vectorial}
-		\includegraphics[width=0.3\textwidth]{ra-vectorial}
-    }
+     \end{subfigure}	
 \qquad\qquad
-    \subfigure[Raster] {
+ 	\begin{subfigure}[b]{0.35\textwidth}
+    	\centering
+		\includegraphics[width=\textwidth]{ra-raster}
+		\caption{}
 		\label{fig:ra-raster}
-		\includegraphics[width=0.3\textwidth]{ra-raster}
-    }
+	\end{subfigure}		
   \caption{Subfigure example with vectorial and no-vectorial images}
   \label{fig:figura-completa}
 \end{figure}
@@ -90,4 +94,4 @@ If you wish to include pseudocode or algorithms see \url{http://en.wikibooks.org
 \lstfromfile{java}{1-8}{Opera\c{c}\~{o}es elementares de uma Calculadora}{Calculadora}{showlines=true,morekeywords={begin,System,out,print},numbers=left, firstnumber=1}{Calculadora.java}
 
 
-\centering{\textbf{Written by Matilde Pós-de-Mina Pato\footnote{O autor escreve segundo o AO}, \\2019 October -  version 2.1}}
+\centering{\textbf{Written by Matilde Pós-de-Mina Pato\footnote{O autor escreve segundo o antigo AO}, \\2020 September -  version 2.2}}

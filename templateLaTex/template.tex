@@ -1,4 +1,4 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Template for writing reports
 %% ISEL/IPL Report document class
 %%
@@ -6,20 +6,22 @@
 %% Version 20170313 (Sep 2017) v1.1
 %% Version 20190105 (Jan 2019) v2.0
 %% Version 20191020 (Oct 2019) v2.1
+%% Version 20200925 (Sept 2020) v2.2
+%%
 %%
 %% This work is licensed under the 
-%% Creative Commons Attribution-NonCommercial 4.0 International License. 
+%% MIT License. 
 %% To view a copy of this license, 
-%% visit http://creativecommons.org/licenses/by-nc/4.0/.
+%% visit https://choosealicense.com/licenses/mit/
 %%
 %% Project web page at https://github.com/matpato/reportisel
 %%
 %% BUGS and SUGGESTIONS: please submit an issue at the project web page
 %%
 %% Authors / Contributors:
-%%     - Matilde Pós-de-Mina Pato (mpato@deetc.isel.pt)
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%     - Matilde Pós-de-Mina Pato (matilde.pato@isel.pt)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Main options (please read the manual for further details)
 %% Options marked with (*) are the values by default
 %% See also file "defaults.tex"
@@ -37,35 +39,46 @@
 	12pt,		% (*) 12pt, 11pt, 10pt - use font size
 	a4paper,	% the paper size/format
 	utf8,			% (*) utf8, latin1	- Text encoding: Linux, Mac or Windows
+	onscreen, % (*) onpaper, onscreen Format your thesis in a way that presents well on paper and/or on screen
 	hyperref = true,  % Hyperlinks in citations: true(*) false
-	listof=totoc,
+	listof=totoc
 	]{reportisel} 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%  BEGINING OF USER COSTUMIZATION
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%=========================================================
+% Additional packages you may want to use (comment those not needed)
+%=========================================================
 
 % To register TODO notes in the text
 \usepackage[textsize=footnotesize]{todonotes}
 \setlength{\marginparwidth}{1.5cm}
 %%%%%% Indexing %%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% FIGURES and TABLES
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% To aggregate multiple figures in a single one with subfigures
-\usepackage{subfigure}
+% The contents of both files (acronyms and glossary) will be merged
+\InputIfFileExists{Chapters/acronyms}{%
+% File glossary.tex exists and is read
+}{%
+% File glossary.tex is not found, ignore
+}
 
-% To have text wrapping figures
-\usepackage{wrapfig}
-\usepackage{float}		% Improves the interface for defining floating objects such as figures and tables
+\InputIfFileExists{Chapters/glossary}{%
+% File glossary.tex exists and is read
+}{%
+% File glossary.tex is not found, ignore
+}
+
+% Define the nomenclature command that prints the symbol/abbreviation and generates a list entry at the same time.
+\newcommand*{\nom}[2]{#1\nomenclature{#1}{#2}}
 %
 %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Standard configuration for user included packages
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\usepackage{sty/code}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{sty/code}
 %% Relational Algebra Operators 
-\usepackage{relationalAlgebra}
+\usepackage{sty/relationalAlgebra}
 % Where to look for figures
 \graphicspath{{Logo/}{Chapters/img/}} 
 % Where to find code scripts files
@@ -74,9 +87,11 @@
 \newcommand{\chapterfiles}[1]{Chapters/#1}
 % syntax: \include{\chapterfiles{name.tex}}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Force word hyphenation
+\hyphenation{e-xem-plo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Some default values that you may whish to override
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Identification: items prefixed with (*) are the default values, as defined in "defaults.tex"
 % (*)\university{Instituto Superior de Engenharia de Lisboa}
 % (*)\faculty{Instituto Politécnico de Lisboa}
@@ -88,18 +103,25 @@
 % (*)\onehalfspacing
 % \doublespacing
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Title of the report
 % USe "\\" to break the title into two or more lines
 
 \input{personaldataofreport}
 %% Title of Report + author(s) + professor + date
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Title of Report + author(s) + professor + date
+\hypersetup{ a4paper=true,
+             pdftitle={ \thetitle},
+             pdfauthor={ \theauthor},
+             pdfsubject={ 
+             },
+             pdfkeywords={{ }, { }, { } }
+             }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% All the names inside braces below sould correspond to a file
 %%     with extension ".tex" and located in the "Chapters" folder
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Resume/summary text in Portuguese
 \ptabstractfile{resumo}
@@ -107,26 +129,54 @@
 % Resume/summary text in English
 \enabstractfile{abstract}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % The Table of Contents is always printed. The other lists may be omited.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Conditionally insert List of Figures, Tables and Code Listings
 \addlisttofrontmatter{\conditionalLoF} 	% The List of Figures. 
 \addlisttofrontmatter{\conditionalLoT} 	% The List of Tables. 
 \addlisttofrontmatter{\conditionalLoL} 	% The List of Code Listings. 
 
+\addlisttofrontmatter{\printnoidxglossary[type=acronym]} % The List of Abreviations 
+\addlisttofrontmatter{\printnoidxglossary} %  default: type=main,  Glossary. Comment to omit.						
+%\printnoidxglossary[type=symbols] % only glossaries 
+%=========================================================
 % Text chapters
 % syntax: \chapterfile{file}
 \chapterfile{chapter1}
 \chapterfile{chapter2}
 \chapterfile{chapter3}
 
-% Text appendixes. Comment if not needed
-% sintax: \appendixfile{file}
-%\appendixfile{appendix1}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%=========================================================
+%% Bibliography style
+%=========================================================
+% If you want to change some parameters
+%\usepackage[
+%style={ieee, numeric, alphabetic, authoryear, authortitle, verbose, apa, chem-acs, chem-angew, mla, nature, science, nejm, phys},
+%sorting={none, nty, nyt, nyvt, anyt, anyvt, ynt, debug},
+%backend={biber,bibtext}
+%url=false,%
+%isbn=false,%
+%urldate=long,
+%uniquename=false,
+%uniquelist=false
+%]{biblatex}
+%
+\addbibresource{bibliography.bib}
+%=========================================================
+%% Text appendixes
+%=========================================================
+% Comment if not needed
+% syntax: \appendixfile{file}
+\appendixfile{appendix1}
+%=========================================================
+%%
+%%  END OF USER COSTUMIZATION
+%%
+%=========================================================
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %%==== DANGER ==== DANGER ==== DANGER ==== DANGER ==== DANGER ====
 %%==== DANGER ==== DANGER ==== DANGER ==== DANGER ==== DANGER ====
@@ -139,67 +189,63 @@
 %%==== DANGER ==== DANGER ==== DANGER ==== DANGER ==== DANGER ====
 %%==== DANGER ==== DANGER ==== DANGER ==== DANGER ==== DANGER ====
 %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Begining of document
 \begin{document}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Before main text
 \frontmatter
-%% The first front page. Repeats the front page twice 
-%% \Repeat{n-times}{\command}
-%\Repeat{1}{\frontpage}
-\frontpage
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% All the names inside braces below sould correspond to a file
-%%     with extension ".tex" and located in the "Chapters" folder
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Abstracts/resumes/summaries in two languages. The first abstract will
+% The first front page. Repeats the front page twice 
+% \Repeat{n-times}{\command}
+\printcoverpage
+%\InputIfFileExists{\jobname.xmpdata}{}{}
+
+%=========================================================
+%  Print Abstracts/resumes/summaries in two languages. The first abstract will
 % use the document main language and second the foreign language
+%=========================================================
+% 
 \printabstract
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Always print the table of contents
+
+%=========================================================
+%  Print table of contents
+%=========================================================
+
 \addtocontents{toc}{\protect\setcounter{tocdepth}{-1}}
 \tableofcontents
 \addtocontents{toc}{\protect\setcounter{tocdepth}{3}}
 %
 %% Print other lists of contents according to instructions given above
 \printotherlists 
-%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% The List of Symbols (Nomenclature). Comment to omit.
+%\printnomenclature
+%
+%=========================================================
 %  Print Document Chapters
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%=========================================================
 %%
+% Title page: page (i)
 \printchapters
 %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%  Print Bibliography
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%
-%\cleardoublepage
-% Include all references in .bib file, even non-cited ones...
-\nocite{*}
+%=========================================================
+%% Print bibliography 
 % Produces the bibliography section when processed by BibTeX
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Bibliography style
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Replacement bibliography styles provided by 'natbib' package
-% (plainnat.bst, abbrvnat.bst, unsrtnat.bst )
-\bibliographystyle{plainnat} % > entries ordered alphabetically
-% External bibliography database file in the BibTeX format
+%=========================================================
 \cleardoublepage
-\bibliography{bibliography} % file "bibliography.bib"
-%\addcontentsline{toc}{chapter}{\bibname} % Add entry in the table of contents as chapter
+\normalem
+\printbibliography[heading=bibintoc]					
 %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ----------------------------------------------------------------------
 %  Print appendixes, if any!  (optional)
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ----------------------------------------------------------------------
 %%
 \cleardoublepage
 \setcounter{page}{1} \pagenumbering{roman}
 \printappendixes 
 \cleardoublepage
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% End of document
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{document} 
