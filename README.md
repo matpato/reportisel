@@ -82,9 +82,7 @@ The template presents some instructions how to write a report, or the major conc
 1. Overleaf is an online LaTeX and Rich Text collaborative writing and publishing tool that makes the whole process of writing, editing and publishing scientific documents much quicker and easier. (source: https://www.overleaf.com)
 
 
-# 
-
-<p>Author</p>
+## Author
 
 	Matilde Pós-de-Mina Pato
 
