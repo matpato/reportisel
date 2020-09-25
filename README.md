@@ -54,7 +54,16 @@ https://github.com/matpato/thesisisel.
 1. template.tex: The main file. Please refrain from changing the file content outside of the well defined area;
 1. bibliography.bib: The bib file. An easy way to find to import citation into bibtex is select option "Show links to import citation into BibTex" in \href{http://scholar.google.pt/scholar_settings?hl=en&as_sdt=0,5}{Scholar google settings};
 1. reportisel.cls: The  LaTeX class file for the thesis{} style. Currently, some of the defaults are stored here instead of \verb!defaults.tex!. This file should not be changed, unless you're ready to play with fire! :) - **DO NOT CHANGE**).
-1. relationalAlgebra.sty: Contains adapted Relational algebra symbols from ftp://reports.stanford.edu/www/dbgroup_only/latex-macros.html. This is used, only, for Sistemas de Informação class. This file should not be changed, unless you're ready to play with fire! :) - **DO NOT CHANGE**).
+1. relationalAlgebra.sty: Contains adapted Relational algebra symbols from ftp://reports.stanford.edu/www/dbgroup_only/latex-macros.html. This is used, only, for Sistemas de Informação course. This file should not be changed, unless you're ready to play with fire! :) - **DO NOT CHANGE**).
+
+All of these files should be in the same folder. The outputs will be a .pdf file called **template.pdf** with the manuscript. After that, this should be renamed. 
+
+In addition, latex generates extra files which are .aux, .log, .out, .bbl and .synctex.gz. Theses files provide important info: 
+	
+	.log - about the compiler that you are running (warning and errors);
+	.aux, .sync, .toc and others - are needed for things to actually work when you compile your document multiple times.
+
+Deleting them can break things, then it's not really a great idea to (automatically) remove them. However, if you desire to have a cleaner working directory, there are a few ways to accomplish that. For example, you can compile your document with the output-directory parameter. [Read more ...](https://tex.stackexchange.com/questions/369771/how-to-delete-files-generated-by-latex)   
 
 ## Some informations
 
