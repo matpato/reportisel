@@ -130,10 +130,34 @@ You must choose the font size for your document. The available options are:
 Let's have a look at a couple of examples:
 
 \begin{itemize}
-	\item Preparation of report document, in portuguese, with 12pt size and to be printed one sided (I wonder why one would do this!)\\
-	\verb!\documentclass[preprpt,pt,12pt,oneside,latin1]{reportisel}!
-	\item Report, in english, with 12pt size and to be printed double sided\\
-	\verb!\documentclass[rpt,en,12pt,twoside,utf8]{reportisel}!
+	\item Preparation of report document, in portuguese, with 12pt size, to be printed twoside sided  and to be read on screen
+	\begin{lstlisting}[language=myLatex]
+	\documentclass[
+		preprpt,	% (*)rpt, preprpt - Technical Report or PrepTechnical Report
+		pt,	% (*)pt, en - languages 
+		twoside,	% (*)twoside, oneside - single or double sided printing
+		12pt,	% (*)12pt, 11pt, 10pt - use font size
+		a4paper,	% Paper size/format
+		utf8,		% (*)utf8, latin1 - Text encoding: Linux, Mac or Windows
+		onscreen,	% (*)onscreen, onpaper - Page layout: screen versus paper print
+		hyperref = true,  % (*)true, false - Hyperlinks in citations
+		listof = totoc	% Print all entries in table of contents
+	]{reportisel} 
+	\end{lstlisting}
+	\item Report, in english, with 12pt size and to be printed one sided (I wonder why one would do this!), in paper
+	\begin{lstlisting}[language=myLatex]
+	\documentclass[
+		rpt,	% (*)rpt, preprpt - Technical Report or PrepTechnical Report
+		pt,	% (*)pt, en - languages 
+		oneside,	% (*)twoside, oneside - single or double sided printing
+		12pt,	% (*)12pt, 11pt, 10pt - use font size
+		a4paper,	% Paper size/format
+		utf8,		% (*)utf8, latin1 - Text encoding: Linux, Mac or Windows
+		onpaper,	% (*)onscreen, onpaper - Page layout: screen versus paper print
+		hyperref = true,  % (*)true, false - Hyperlinks in citations
+		listof = totoc	% Print all entries in table of contents
+	]{reportisel} 
+	\end{lstlisting}
 \end{itemize}
 % subsection examples (end)
 

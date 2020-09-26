@@ -1,4 +1,4 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% reportisel.cls
 %%% ISEL/IPL Report document class
 %%%
@@ -30,7 +30,7 @@
 %%% WARNING WARNING WARNING WARNING WARNING WARNING WARNING 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{thesisisel}[2012/10/09 ISEL thesis template]
+\ProvidesClass{reportisel}[2012/10/09 ISEL thesis template]
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% OPTIONS 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -91,20 +91,20 @@
 }
 % == Printable or on Screen Report ===
 % Format your report in a way that presents:
-% \@printable=1		on paper: onpaper
 % \@printable=0		on screen: onscreen 
-\DeclareOption{onpaper}{
-	\let\@printable=1
-}
+% \@printable=1		on paper: onpaper
 \DeclareOption{onscreen}{
 	\let\@printable=0
+}
+\DeclareOption{onpaper}{
+	\let\@printable=1
 }
 
 % == Default Options ===
 \ExecuteOptions{
 	pt,
 	msc,
-	onpaper
+	onscreen
 }
 \ProcessOptions
 
@@ -229,18 +229,6 @@
 		\DeclareGraphicsExtensions{.eps, .png, .jpg}
 \fi
 
-%\ifpdf
-%	\RequirePackage[pdftex]{graphicx}
-%	\DeclareGraphicsExtensions{.pdf, .png, .jpg, .tif}
-%	\RequirePackage[pdftex,usenames,dvipsnames]{color}
-%%	\definecolor{mydarkblue}{rgb}{0.0,0.08,0.45}	
-%\else
-%	\RequirePackage{graphicx}
-%	\DeclareGraphicsExtensions{.eps, .png, .jpg}
-%	\RequirePackage[usenames]{color}
-%	%\definecolor{mydarkblue}{rgb}{0.0,0.08,0.45}
-%\fi
-
 %=================================================
 % PACKAGE: tikz
 %=================================================
@@ -351,11 +339,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% Some relevant strings
-\gdef\@singlemauthorstr{Aluno}
-\gdef\@manymauthorstr{Alunos}
-\gdef\@singlefauthorstr{Aluna}
-\gdef\@manyfauthorstr{Alunas}
-
 \gdef\@singlemadviserstr{Professor}
 \gdef\@singlefadviserstr{Professora}
 \gdef\@manymadviserstr{Professores}
@@ -401,7 +384,6 @@ Unidade Curricular de \@course \\da \@majorfield}
  
 	\def\lstlistlistingname{Listagens}
 	  	\addto{\captionsportuguese}{%
-			%\renewcommand*{\lstlistingname}{Listagem}%
 			\renewcommand*{\lstlistingname}{Listagem}% Listing -> Algorithm
 			\renewcommand{\lstlistlistingname}{Lista de Listagens}% List of Listings -> List of Algorithms
 	}
@@ -417,7 +399,6 @@ Unidade Curricular de \@course \\da \@majorfield}
 
 	\def\lstlistlistingname{Listings}
 	  	\addto{\captionsenglish}{%
-			%\renewcommand*{\lstlistingname}{Listagem}%
 			\renewcommand*{\lstlistingname}{Listing}% Listing -> Algorithm
 			\renewcommand{\lstlistlistingname}{List of \lstlistingname s}% List of Listings -> List of Algorithms
 	}
@@ -486,65 +467,37 @@ Unidade Curricular de \@course \\da \@majorfield}
 
 
 %% Authors identification (at most 3 of each)
-%% \author[m|f]{Category}{Name}
-%% where N i a number from 1 to 4
-\def\@theauthorgender{m}	% default for female authors
+%% \author[]{number}{name}{e-mail}
 \newcount\@theauthorcount	% number of authors
 \@theauthorcount 0\relax
 
 \def\author{%
   \@ifnextchar [%
-    {\@pauthor[]}%
-    {\@pauthor[][m]}}
+    {\@pauthor[]}
+    {\@pauthor[]}
+    }
 
 % #1 = [] for author
-% #2 = [m] or [f]
+% #2 =  {number}
 % #3 = {name}
-\def\@pauthor[#1][#2]#3#4{%
+% #4 = {e-mail}
+
+\def\@pauthor[#1]#2#3#4{%
   \expandafter\advance\csname @the#1authorcount\endcsname 1\relax
-  \ifx#2m
-  	\def\@the#1authorgender{m}
-  \else\ifx#2f
-  	\def\@the#1authorgender{f}
-  \else
-  \typeout{^^J%
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!^^J%
-!  Please specify #1author gender using [m] or [f] as the second^^J%
-!  argument of the "#1author" macro.  See the template! ;)^^J%
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!^^J%
-}
-   \errhelp{Please be gentle and follow the template recommendations.}
-   \errmessage{Please specify author gender!}
-  \fi\fi
-  \expandafter\gdef\csname @#1authorname\expandafter\number\csname @the#1authorcount\endcsname\endcsname{#3}
-  \expandafter\gdef\csname @#1authorcat\expandafter\number\csname @the#1authorcount\endcsname\endcsname{#4}
-	}
 
-\def\@theauthorstr[#1]{%
-	\@ptheauthorstr[#1]{\expandafter\csname @the#1authorcount\endcsname}{\expandafter\csname @the#1authorgender\endcsname}
-	}
-
-\def\@ptheauthorstr[#1]#2#3{%
-	\ifnum #2 > 1
-  		\expandafter\csname @many#3#1authorstr\endcsname
-	\else
-  		\expandafter\csname @single#3#1authorstr\endcsname
-	\fi
+	\expandafter\gdef\csname @#1authornum\expandafter\number\csname @the#1authorcount\endcsname\endcsname{#2}
+ 	\expandafter\gdef\csname @#1authorname\expandafter\number\csname @the#1authorcount\endcsname\endcsname{#3}
+ 	\expandafter\gdef\csname @#1authoremail\expandafter\number\csname @the#1authorcount\endcsname\endcsname{#4}
 	}
 
 \def\printauthor[#1]#2{%
-	\ifcsname @#1authorname#2\endcsname
-		\ifnum #2 = 1
-			& \\[-2ex]
-			\@theauthorstr[#1]
-		\fi
-		&
-		\expandafter\csname @#1authorcat#2\endcsname\
-		\expandafter\csname @#1authorname#2\endcsname
+	\ifcsname @#1authornum#2\endcsname
+		\expandafter\csname @#1authornum#2\endcsname\ : &
+		\expandafter\csname @#1authorname#2\endcsname  
+		\hspace*{.25em} (\expandafter\csname @#1authoremail#2\endcsname )  \vspace*{.5em}
 	\\
 	\fi
 	}
-
 % -----------------
 %% Advisors identification (at most 2 of each)
 %% \adviser[m|f]{Category}{Name}

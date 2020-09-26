@@ -12,15 +12,16 @@ This document will serve as a template for the preparation of a report for the P
 https://github.com/matpato/thesisisel.
 
 	\documentclass[
-		rpt,		%  rpt, preprpt - Technical Report or Preparatory Technical Report
-		pt,		% (*) pt, en - languages 
-		twoside,	% (*) twoside, oneside - single or double sided printing
-		12pt,		% (*) 12pt, 11pt, 10pt - use font size
+		rpt,		% (*)rpt, preprpt - Technical Report or PrepTechnical Report
+		pt,			% (*)pt, en - languages 
+		twoside,	% (*)twoside, oneside - single or double sided printing
+		12pt,		% (*)12pt, 11pt, 10pt - use font size
 		a4paper,	% the paper size/format
-		utf8,		% (*) utf8, latin1	- Text encoding: Linux, Mac or Windows
-		hyperref = true,% Hyperlinks in citations: true(*) false
-		listof=totoc
-		]{reportisel} 
+		utf8,		% (*)utf8, latin1 - Text encoding: Linux, Mac or Windows
+		onscreen, % (*)onscreen, onpaper - Page layout: screen versus paper print	
+		hyperref = true,  % (*)true, false - Hyperlinks in citations
+		listof = totoc
+	]{reportisel} 
 
 **How to run (terminal or console)**
 
