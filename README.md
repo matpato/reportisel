@@ -18,7 +18,7 @@ https://github.com/matpato/thesisisel.
 		12pt,		% (*)12pt, 11pt, 10pt - use font size
 		a4paper,	% paper size/format
 		utf8,		% (*)utf8, latin1 - Text encoding: Linux, Mac or Windows
-		onscreen, % (*)onscreen, onpaper - Page layout: screen versus paper print	
+		onscreen, 	% (*)onscreen, onpaper - Page layout: screen versus paper print	
 		hyperref = true,  % (*)true, false - Hyperlinks in citations
 		listof = totoc
 	]{reportisel} 
