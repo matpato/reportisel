@@ -1,0 +1,87 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% frontpage.clo
+%% ISEL report configuration file
+%%
+%% Costumization for the FRONTPAGE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\printcoverpage{
+
+\thispagestyle{empty}
+\newgeometry{tmargin=0.5cm,bmargin=0.5cm,lmargin=2cm,rmargin=2cm}
+
+\begin{minipage}{0.3\textwidth}
+% Put logo
+	\logo{\@universitylogo}
+\end{minipage}
+
+\begin{center}
+
+%Define font style (ptm=Times New Roman)
+	\fontfamily{ptm}
+
+
+\vspace{0.25cm}	
+% Name of Department
+	\fontsize{14}{16.8}
+	\selectfont
+	\textbf{\@department}
+
+\vspace{0.65cm}
+% Title of Dissertation
+	\fontsize{18}{21.6}
+	\selectfont
+	\textbf{\@title}\\[0.75cm]
+
+\vspace{0.2cm}	
+% Name of Authors
+	\fontsize{13}{14.4}
+	\selectfont
+	\ctable[
+		cap=,
+		caption=,
+		label=,
+		pos=h,
+		maxwidth=1\linewidth,
+		doinside=\hspace*{-0.1cm},
+	]{rX}{}{ 
+		\printauthor[]{1}
+		\printauthor[]{2}
+		\printauthor[]{3}
+}
+
+\vspace{0.9cm}	
+%% Degree
+	\fontsize{12}{13}
+	\selectfont
+	\@presentationtext
+	
+	\vfill
+	% Advisers
+	\fontsize{11}{14.4}
+	\selectfont
+	\ctable[
+		cap=,
+		caption=,
+		label=,
+		pos=h,
+		maxwidth=1\linewidth,
+		doinside=\hspace*{-0.1cm},
+	]{rX}{}{ 
+		\printadviser[]{1}
+		\printadviser[]{2}
+}
+
+
+\vfill\vfill\vfill
+
+% Date
+\fontsize{10}{12.2}
+\selectfont
+\textbf{\@theday ~ -- ~ \@themonth ~ -- ~  \@theyear}
+	
+\end{center}
+\restoregeometry
+\cleardoublepage %\newpage
+\thispagestyle{empty}
+}

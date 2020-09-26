@@ -1,0 +1,45 @@
+\chapter{Applied Survival Analysis by Hosmer and Lemeshow} 
+\label{anexo1}
+Stata Textbook Examples
+Applied Survival Analysis by Hosmer and Lemeshow \cite{newtest}
+
+The data files used for the examples in this text can be downloaded in a zip file from the Wiley FTP website or the Stata Web site.
+
+\lstset{language=R,frame=none,numbers=left,escapechar=|,morekeywords={},caption=,label=code:newtest}
+\begin{lstlisting}    
+# The R package(s) needed for this chapter is the survival package. 
+# We currently use R 2.0.1 patched version. You may want to make sure 
+# that packages on your local machine are up to date. You can perform 
+# updating in R using update.packages() function.
+
+# url: http://www.ats.ucla.edu/stat/r/examples/
+# data set is hmohiv.csv.
+hmohiv<-read.table("http://www.ats.ucla.edu/stat/r/examples/asa/hmohiv.csv", sep=",", header = TRUE)
+attach(hmohiv)
+hmohiv
+
+# using the hmohiv data set. To control the type of symbol, a variable called psymbol is created. 
+# It takes value 1 and 2, so the symbol type will be 1 and 2. 
+psymbol<-censor+1
+table(psymbol)
+
+plot(age, time, pch=(psymbol))
+legend(40, 60, c("Censor=1", "Censor=0"), pch=(psymbol))
+
+age1<-1000/age
+plot(age1, time, pch=(psymbol))
+legend(40, 30, c("Censor=1", "Censor=0"), pch=(psymbol))
+
+# Package "survival" is needed for this analysis and for most of the analyses in the book.
+library(survival)
+test <- survreg( Surv(time, censor) ~ age, dist="exponential")
+summary(test)
+
+pred <- predict(test, type="response") 
+ord<-order(age)
+age_ord<-age[ord]
+pred_ord<-pred[ord]
+plot(age, time, pch=(psymbol))
+lines(age_ord, pred_ord)
+legend(40, 60, c("Censor=1", "Censor=0"), pch=(psymbol))
+\end{lstlisting}

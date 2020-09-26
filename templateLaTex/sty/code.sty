@@ -1,0 +1,295 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%	Helper package to develop presentations in beamer
+%	Authors: Matilde Pato & Nuno Datia
+%	2018, March
+%	Version 1
+%	Depends on: beamer, xparse, listings, tcolorbox
+% Suports: Java, XML, R, SQL
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{code}[2018/03/03 v1 Base file of Helper package to develop presentations in beamer]
+
+%************** PACKAGES ***************
+\RequirePackage{xparse} %ARGUMENTS PARSING
+\RequirePackage{listings}
+\RequirePackage{tcolorbox}
+
+%************** STYLES ***************
+% == Color Definitions ===
+\definecolor{olivegreen}    {cmyk}{0.64, 0 , 0.95, 0.40}
+\definecolor{dkgreen}{rgb}{0,0.6,0}	
+\definecolor{midnightblue}  {cmyk}{0.98, 0.13, 0 , 0.43}
+
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\definecolor{ltgray}{rgb}{0.5,0.5,0.5}
+
+\definecolor{ForestGreen}    {cmyk}{0.76, 0 , 0.76, 0.45}
+\definecolor{BrickRed}{cmyk}{0,0.73,0.69,0.28}	
+\definecolor{MidnightBlue}  {cmyk}{0.98, 0.78, 0 , 0.56}
+% Listings
+\usepackage{fancyvrb}
+\colorlet{lstKeywordsColor}{MidnightBlue}
+\colorlet{lstKeywordsAltColor}{BrickRed}
+\colorlet{lstCommentsColor}{ForestGreen}
+\colorlet{lstStringColor}{BrickRed}
+
+%%% Always I forget this so I created some aliases
+\def\ContinueLineNumber{\lstset{firstnumber=last}}
+\def\StartLineAt#1{\lstset{firstnumber=#1}}
+\let\numberLineAt\StartLineAt
+
+%%% MATH: THEREFORE
+\def\therefore{\boldsymbol{\text{ }
+\leavevmode
+\kern-.25em\lower0.4ex\hbox{$\cdot$}
+\kern-.75em\raise0.7ex\hbox{$\cdot$}
+\kern-.75em\lower0.4ex\hbox{$\cdot$}
+\quad\thinspace\text{ }}}
+
+
+%Javalst
+% Usage: \begin{javalst}[Caption]{Label}
+\lstnewenvironment{javalst}[2][]%
+{
+	\lstset{
+	language=java,
+	basicstyle=\small\tt,
+	frame=tb,
+	captionpos=b,
+	caption=#1,
+	label={lst:#2},
+	tabsize=2}
+	}%
+{}%
+
+%XMLlst
+\lstnewenvironment{xmllst}[2][]%
+{
+	\lstset{
+	language=XML,
+	basicstyle=\small\tt,
+	frame=tb,
+	captionpos=b,
+	caption=#1,
+	label={lst:#2},
+	tabsize=2}
+	}%
+{}%
+
+%lst
+\lstnewenvironment{lst}[2][]%
+{\
+	lstset{
+		basicstyle=\footnotesize\tt,
+		frame=tb,
+		captionpos=b,
+		caption=#1,
+		label={lst:#2},
+		tabsize=2}
+		}%
+{}
+
+\renewcommand{\lstlistingname}{Código}
+
+% ************* Continue line numbers in listings package  *************
+%  Always I forget this so I created some aliases
+
+\def\ContinueLineNumber{
+	\lstset{
+		firstnumber = last
+		}
+	}
+\def\StartLineAt#1{
+	\lstset{
+		firstnumber = #1
+		}
+	}
+\let\numberLineAt\StartLineAt
+
+\lstset{
+literate=%
+% Latin
+  {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+  {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+  {à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
+  {À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
+  {ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+  {Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+  {â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
+  {Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
+  {ã}{{\~a}}1
+  {œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
+  {ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1
+  {ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
+  {€}{{\euro}}1 {£}{{\pounds}}1 {«}{{\guillemotleft}}1
+  {»}{{\guillemotright}}1 {ñ}{{\~n}}1 {Ñ}{{\~N}}1 {¿}{{?`}}1
+}  
+
+% ************* FOR  CODE IN FILE ************* 
+% usage \lstfromfile{language}{linerange}{caption}{label}{othersinsideoflstinoputlisting}{path}
+\newcommand{\lstfromfile}[6]{	
+	\lstinputlisting[
+		language=#1,
+		linerange={#2},
+		basicstyle=\small\tt,
+		frame=tb,
+		captionpos=b,
+		commentstyle=\color{lstCommentsColor},
+		stringstyle=\color{lstStringColor},
+		keywordstyle=\color{lstKeywordsColor}\bfseries,
+		caption=#3,
+		label={lst:#4},
+		tabsize=2,
+		#5] {#6}
+}
+
+% ************* DEFINE R LANGUAGE DEFINITIONS ************* 
+\lstset{ %
+  language=R,                     % the language of the code
+  basicstyle=\footnotesize,       % the size of the fonts that are used for the code
+  numbers=left,                   % where to put the line-numbers
+  numberstyle=\tiny\color{gray},  % the style that is used for the line-numbers
+  stepnumber=1,                   % the step between two line-numbers. If it's 1, each line
+                                  % will be numbered
+  numbersep=5pt,                  % how far the line-numbers are from the code
+  backgroundcolor=\color{white},  % choose the background color. You must add \usepackage{color}
+  showspaces=false,               % show spaces adding particular underscores
+  showstringspaces=false,         % underline spaces within strings
+  showtabs=false,                 % show tabs within strings adding particular underscores
+  frame=single,                   % adds a frame around the code
+  rulecolor=\color{black},        % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. commens (green here))
+  tabsize=2,                      % sets default tabsize to 2 spaces
+  captionpos=b,                   % sets the caption-position to bottom
+  breaklines=true,                % sets automatic line breaking
+  breakatwhitespace=false,        % sets if automatic breaks should only happen at whitespace
+  title=\lstname,                 % show the filename of files included with \lstinputlisting;
+                                  % also try caption instead of title
+  keywordstyle=\color{blue},      % keyword style
+  commentstyle=\color{dkgreen},   % comment style
+  stringstyle=\color{mauve},      % string literal style
+  %escapeinside={\%*}{*)},         % if you want to add a comment within your code
+  morekeywords={*,^,TRUE,FALSE}           % if you want to add more keywords to the set
+} 
+
+% ************* DEFINE JAVA LANGUAGE DEFINITIONS ************* 
+\lstset{ %
+	language=java, 		% choose the language of the code
+	basicstyle=\footnotesize\tt, 	% the size of the fonts that are used for the code
+	numbers=left,		% where to put the line-numbers
+	numberstyle=\tiny,% the size of the fonts that are used for the line-numbers
+	stepnumber=1,		 % the step between two line-numbers. If it is 1 each line will be numbered
+	numbersep=5pt,	% how far the line-numbers are from the code
+	backgroundcolor=\color{white},  % choose the background color. You must add 		\usepackage{color}
+	showspaces=false, % show spaces adding particular underscores
+	showstringspaces=false,  % underline spaces within strings
+	showtabs=false,	% show tabs within strings adding particular underscores
+	frame=single,		% adds a frame around the code
+	tabsize=2,				% sets default tabsize to 2 spaces
+	captionpos=b,		 % sets the caption-position to bottom
+	breaklines=true,	 % sets automatic line breaking
+	breakatwhitespace=false, % sets if automatic breaks should only happen at whitespace
+	escapeinside={\%*}{*)}, 	% if you want to add a comment within your code
+	stringstyle= \color{lstStringColor},
+	keywordstyle = \color{lstKeywordsColor}\bfseries,
+	commentstyle= \color{lstCommentsColor}\itshape,
+	morecomment=[l][basicstyle]{http://} %<---- NEW BIT!
+}
+
+% ************* DEFINE SQL LANGUAGE DEFINITIONS ************* 
+\lstset{%
+	 language=SQL,
+  	backgroundcolor=\color{white},
+  	basicstyle=\footnotesize,
+  	breakatwhitespace=false,
+  	breaklines=true,
+  	captionpos=b,
+  	commentstyle=\color{dkgreen},
+  	deletekeywords={...},
+  	escapeinside={\%*}{*)},
+  	extendedchars=true,
+  	frame=single,
+  	keepspaces=true,
+  	keywordstyle=\color{blue},
+  	morekeywords={*,modify,begin,references,REFERENCES,theta,equijoin, project, rename,PRINT,IS NULL},
+  	numbers=left,
+  	numbersep=15pt,
+  	numberstyle=\tiny,
+  	rulecolor=\color{ltgray},
+  	showspaces=false,
+  	showstringspaces=false, 
+  	showtabs=false,
+  	stepnumber=1,
+  	tabsize=4,
+  	title=\lstname
+}
+
+% ************* DEFINE LaTeX LANGUAGE DEFINITIONS ************* 
+\definecolor{lightgrey}{rgb}{0.9,0.9,0.9}
+ 
+\lstdefinelanguage{myLaTeX}
+{
+	numbers=none,
+	breaklines=true,
+	keywordstyle=\color{dkgreen},
+	commentstyle=\color{red},
+	otherkeywords={\%, \\ },
+	frame=none,
+	tabsize=2,
+	morekeywords ={ documentclass }
+}
+
+\lstset{
+  language={myLaTeX},
+  basicstyle={\small},
+  identifierstyle={\small},
+  commentstyle={\small\itshape},
+  keywordstyle={\small\bfseries},
+  ndkeywordstyle={\small},
+  stringstyle={\small\ttfamily},
+  frame={tb},
+  breaklines=true,
+  columns=[l]{fullflexible},
+  numbers=left,
+  xrightmargin=0em,
+  xleftmargin=3em,
+  numberstyle={\scriptsize},
+  stepnumber=1,
+  numbersep=1em,
+  lineskip=1ex
+}
+
+% ************* FOR INLINE CODE ************* 
+% usage \code{language}{code}
+\newcommand{\code}[2]{
+	\lstinline[
+		language=#1,
+		basicstyle=\tt,%
+		keywordstyle=\color{lstKeywordsColor}\bfseries,%
+		commentstyle=\color{lstCommentsColor},%
+		stringstyle=\color{lstStringColor},% 		
+		morekeywords={DATETIME}
+		]
+		|#2|
+		}
+		
+\newcommand{\codemorekeywords}[3]{
+	\lstinline[
+		language=#1,
+		basicstyle=\tt,%
+		keywordstyle=\color{lstKeywordsColor}\bfseries,%
+		commentstyle=\color{lstCommentsColor},%
+		stringstyle=\color{lstStringColor},% 		
+		morekeywords=#2
+		]
+		|#3|
+		}		
+
+
+
+
