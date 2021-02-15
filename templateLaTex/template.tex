@@ -21,7 +21,6 @@
 %% Authors / Contributors:
 %%     - Matilde Pós-de-Mina Pato (matilde.pato@isel.pt)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Main options (please read the manual for further details)
 %% Options marked with (*) are the values by default
 %% See also file "defaults.tex"
@@ -30,8 +29,8 @@
 %% If you want to use latin1, you should first re-save all these
 %% files (*.tex, *.cls,  ...) using latin1 encoding first
 %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \documentclass[
 	rpt,			% (*)rpt, preprpt - Technical Report or PrepTechnical Report
 	pt,			% (*)pt, en - languages 
@@ -47,9 +46,9 @@
 %%  BEGINING OF USER COSTUMIZATION
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%=========================================================
+%======================================================
 % Additional packages you may want to use (comment those not needed)
-%=========================================================
+%======================================================
 
 % To register TODO notes in the text
 \usepackage[textsize=footnotesize]{todonotes}
@@ -141,16 +140,16 @@
 \addlisttofrontmatter{\printnoidxglossary[type=acronym]} % The List of Abreviations 
 \addlisttofrontmatter{\printnoidxglossary} %  default: type=main,  Glossary. Comment to omit.						
 %\printnoidxglossary[type=symbols] % only glossaries 
-%=========================================================
+%======================================================
 % Text chapters
 % syntax: \chapterfile{file}
 \chapterfile{chapter1}
 \chapterfile{chapter2}
 \chapterfile{chapter3}
 
-%=========================================================
+%======================================================
 %% Bibliography style
-%=========================================================
+%======================================================
 % If you want to change some parameters
 %\usepackage[
 %style={ieee, numeric, alphabetic, authoryear, authortitle, verbose, apa, chem-acs, chem-angew, mla, nature, science, nejm, phys},
@@ -164,19 +163,13 @@
 %]{biblatex}
 %
 \addbibresource{bibliography.bib}
-%=========================================================
+%======================================================
 %% Text appendixes
-%=========================================================
+%======================================================
 % Comment if not needed
 % syntax: \appendixfile{file}
 \appendixfile{appendix1}
 
-%=========================================================
-%%
-%%  END OF USER COSTUMIZATION
-%%
-%=========================================================
-%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %%==== DANGER ==== DANGER ==== DANGER ==== DANGER ==== DANGER ====
