@@ -13,7 +13,7 @@ https://github.com/matpato/thesisisel.
 
 	\documentclass[
 		rpt,		% (*)rpt, preprpt - Technical Report or PrepTechnical Report
-		pt,		% (*)pt, en - languages 
+		pt,			% (*)pt, en - languages 
 		twoside,	% (*)twoside, oneside - single or double sided printing
 		12pt,		% (*)12pt, 11pt, 10pt - use font size
 		a4paper,	% paper size/format
@@ -76,27 +76,25 @@ The template will first automatically place the abstract in the language of the 
 The template presents some instructions how to write a report, or the major concepts how to write a good report: title, abstract, keywords and chapters. I recommend to you to read carefully. Moreover, you will find some instructions how to write in #LaTex, for instance how to insert a figure, table, some text formats and others. In addition, the list below you can see some webpages that may be useful
 
 	https://www.latex-project.org
-	https://www.sharelatex.com/learn/Creating_a_document_in_LaTeX
+	https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes
 	http://www4.di.uminho.pt/~jcr/AULAS/didac/manuais/manual-latex.pdf
 
 	tikZ and PGF: http://www.texample.net/tikz/
 
 ## Available Software
 
+1. Overleaf is an online LaTeX and Rich Text collaborative writing and publishing tool that makes the whole process of writing, editing and publishing scientific documents much quicker and easier. (source: https://www.overleaf.com). In this case, you need to create an account. After logging in, create a new project in "New Project" and select "Upload Zipped Project". Place the zip of this content in the window that was opened. 
+
 1. Texmaker is a free, modern and cross-platform LaTeX editor for linux, macosx and windows systems that integrates many tools needed to develop documents with LaTeX, in just one application. (source: http://www.xm1math.net/texmaker/)
 
 1. MiKTeX (pronounced mick-tech) is an up-to-date implementation of TeX/LaTeX and related programs. TeX is a typesetting system written by Donald Ervin Knuth who says that it is intended for the creation of beautiful books - and especially for books that contain a lot of mathematics. (source: https://miktex.org)
-
-1. ShareLaTeX is an open-source online real-time collaborative LaTeX editor. We run a hosted version at http://www.sharelatex.com, but you can also run your own local version, and contribute to the development of ShareLaTeX. (source: https://pt.sharelatex.com)
 	
-1. Overleaf is an online LaTeX and Rich Text collaborative writing and publishing tool that makes the whole process of writing, editing and publishing scientific documents much quicker and easier. (source: https://www.overleaf.com)
-
 
 ## Author
 
 	Matilde Pós-de-Mina Pato
 
-Last update: September, 25th 2020 
+Last update: June, 14th 2023 
 
 **this package and template are not official for ISEL/IPL**
 

@@ -3,7 +3,6 @@
 
 Este capítulo irá mostrar como pode inserir tabelas, figuras e/ou listagens. Consi\-de\-re-se que listagens não são todo o código mas partes do código. Estas irão suportar algumas frases dos parágrafos escritos. Não se esqueça, que todas as tabelas, figuras e listagens devem ser referenciadas no corpo do texto.
 
-
 \section{Tabelas} % (fold)
 \label{sec:inserting_tables}
 
@@ -29,7 +28,6 @@ Gnat  & per gram & 13.65 \\
       & each     &  0.01 \\
 Gnu   & stuffed  & 92.50 \\
 Emu   & stuffed  & 33.33 \\
-Armadillo & frozen & 8.99 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -53,7 +51,8 @@ Armadillo & frozen & 8.99 \\
  This then gives you access to:\\
  \verb!\begin{wrapfigure}[lineheight]{alignment}{width}!
  
- Alignment can normally be either 'l' for left, or 'r' for right. Lowercase 'l' or 'r' forces the figure to start precisely where specified (and may cause it to run over page breaks), while capital 'L' or 'R' allows the figure to float. If you defined your document as twosided, the alignment can also be 'i' for inside or 'o' for outside, as well as 'I' or 'O'. The width is obviously the width of the figure. 
+ Alignment can normally be either 'l' for left, or 'r' for right. Lowercase 'l' or 'r' forces the figure to start precisely where specified (and may cause it to run over page breaks), while capital 'L' or 'R' allows the figure to float. If you defined your document as twosided, the alignment can also be 'i' for inside or 'o' for outside, as well as 'I' or 'O'. The width is obviously the width of the figure. \\[.5em]
+
  
  
 \subsection{Outras imagens} % (fold)
@@ -64,14 +63,14 @@ There are two different ways to place two figures/tables side-by-side.  More com
 
 \begin{figure}[htbp]
 	\centering
-    \begin{subfigure}[b]{0.35\textwidth}
+    \begin{subfigure}[b]{0.25\textwidth}
     	\centering
 		\includegraphics[width=\textwidth]{ra-vectorial}
 		\caption{}
 		\label{fig:ra-vectorial}
      \end{subfigure}	
 \qquad\qquad
- 	\begin{subfigure}[b]{0.35\textwidth}
+ 	\begin{subfigure}[b]{0.25\textwidth}
     	\centering
 		\includegraphics[width=\textwidth]{ra-raster}
 		\caption{}
@@ -91,7 +90,7 @@ If you wish to include pseudocode or algorithms see \url{http://en.wikibooks.org
 
 %  \lstfromfile{language}{linerange}{caption}{label}{othersinsideoflstinoputlisting}{path}
 
-\lstfromfile{java}{1-8}{Opera\c{c}\~{o}es elementares de uma Calculadora}{Calculadora}{showlines=true,morekeywords={begin,System,out,print},numbers=left, firstnumber=1}{Calculadora.java}
+\lstfromfile{java}{7,11-12,15-17}{Opera\c{c}\~{o}es elementares de uma Calculadora}{Calculadora}{showlines=true,morekeywords={begin,System,out,print},numbers=left, firstnumber=1}{Calculadora.java}
 
 
 \centering{\textbf{Written by Matilde Pós-de-Mina Pato\footnote{O autor escreve segundo o antigo AO}, \\2020 September -  version 2.2}}

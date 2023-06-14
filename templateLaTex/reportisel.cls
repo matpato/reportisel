@@ -46,28 +46,28 @@
 
 % == Printing ===
 \DeclareOption{oneside}{%
-  \PassOptionsToClass{oneside}{book}}
+  \PassOptionsToClass{oneside}{report}}
 
 \DeclareOption{twoside}{%
-  \PassOptionsToClass{twoside}{book}}
+  \PassOptionsToClass{twoside}{report}}
 
 % == Paper type/format (dfault A4) ===
-\PassOptionsToClass{a4paper}{book} % Default paper format
+\PassOptionsToClass{a4paper}{report} % Default paper format
 
 \DeclareOption{a4}{%
-	\PassOptionsToClass{a4paper}{book}}
+	\PassOptionsToClass{a4paper}{report}}
 
 \DeclareOption{a4paper}{%
-	\PassOptionsToClass{a4paper}{book}}
+	\PassOptionsToClass{a4paper}{report}}
 
 % == Font Size ===
-\PassOptionsToClass{12pt}{book} % Default point size
+\PassOptionsToClass{12pt}{report} % Default point size
 
 \DeclareOption{11pt}{%
-	\PassOptionsToClass{11pt}{book}}
+	\PassOptionsToClass{11pt}{report}}
 
 \DeclareOption{12pt}{%
-	\PassOptionsToClass{12pt}{book}}
+	\PassOptionsToClass{12pt}{report}}
 			
 % == Text Encoding ===
 \let\@utf=1
