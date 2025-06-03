@@ -1,14 +1,8 @@
-<p align="center">
-    <!-- PROJECT LOGO -->
-    <br />
-    <div style="display: flex; align-items: center;">
-        <div style="flex: 1;">
-            <a href="https://isel.pt" target="_blank">
-                <img src="./images/01_ISEL-Logotipo-RGB_Horizontal.png" alt="ISEL logo" style="width: 400px; height: auto;">
-            </a>
-        </div>
-    </div>
-
+<div align="center">
+  <a href="https://isel.pt" target="_blank">
+    <img src="./images/01_ISEL-Logotipo-RGB_Horizontal.png" alt="ISEL logo" width="400">
+  </a>
+</div>
 [![GitHub forks](https://img.shields.io/github/forks/matpato/reportisel.svg?style=social&label=Fork)](https://github.com/matpato/reportisel)
 [![GitHub stars](https://img.shields.io/github/stars/matpato/reportisel.svg?style=social&label=Star)](https://github.com/matpato/reportisel)
 [![GitHub watchers](https://img.shields.io/github/watchers/matpato/reportisel.svg?style=social&label=Watch)](https://github.com/matpato/reportisel)
@@ -21,7 +15,7 @@
 
 ![![Last commit](https://github.com/matpato/reportisel)](https://img.shields.io/github/last-commit/matpato/reportisel?color=blue)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-</p>
+
 
 A comprehensive document template collection for bachelor's degree technical reports at ISEL (Instituto Superior de Engenharia de Lisboa). Available in both **LaTeX** and **Microsoft Word** formats.
 
