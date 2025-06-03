@@ -413,8 +413,8 @@ Unidade Curricular de \@course \\da \@majorfield}
 	\parbox[t][0.15\paperheight]{0.1\paperwidth}{%
 	\vfill
 	\raggedleft% or better \raggedleft see comments below
-	%\centering
-	\includegraphics[scale=0.5]{#1}%
+	% \centering
+	\includegraphics[scale=.1]{#1}%
 	\vfill
 }}
 
@@ -433,7 +433,7 @@ Unidade Curricular de \@course \\da \@majorfield}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% CREATING A TITLE PAGE
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \def\universitylogo#1{%
+\def\universitylogo#1{%
    \gdef\@universitylogo{#1}}
  \def\@universitylogo{~universitylogo \@notdefined}
 
@@ -611,28 +611,37 @@ Unidade Curricular de \@course \\da \@majorfield}
 		\fi
 	\fi\fi
 }
- 	
+
+\RequirePackage{titlesec}
+
+% Adjust spacing
+\titlespacing*{\chapter}{0pt}{-20pt}{30pt}
+
+% Modify your existing \reportmainmatter
 \def\reportmainmatter{%
-	\mainmatter
-	\pagestyle{fancy}
-	\fancyhead{}
-	\setlength{\headheight}{15pt}
-	\fancyhead[RO,LE]{\leftmark\hfill\rightmark}
-	\def\chaptermark##1{\markboth{\fontfamily{ptm}% Times New Roman (ptm) or Helvetica (phv)
-		\selectfont\footnotesize\thechapter.\ \textsc{##1}}{}}
-	\def\sectionmark##1{\markright{\fontfamily{ptm}%
-	 	\selectfont\footnotesize\thesection.\ ##1}}
-	\if\@language0   % Report in  Portuguese
-		\selectlanguage{portuguese}
-	\else\if\@language1   % Report in English
-		\selectlanguage{english}
-	\fi\fi
+    \mainmatter
+    \pagestyle{fancy}
+    \fancyhf{}
+    \fancyhead[R]{\nouppercase{\leftmark}}
+    \fancyfoot[C]{\thepage}
+    \renewcommand{\headrulewidth}{0.4pt}
+    \setlength{\headheight}{15pt}
+    
+    \def\chaptermark##1{\markboth{\fontfamily{lmr}%
+        \selectfont\footnotesize\thechapter.\ ##1}{}}
+    \def\sectionmark##1{\markright{\fontfamily{lmr}%
+        \selectfont\footnotesize\thesection.\ ##1}}
+    \if\@language0   % Report in  Portuguese
+        \selectlanguage{portuguese}
+    \else\if\@language1   % Report in English
+        \selectlanguage{english}
+    \fi\fi
 }
 
-\def\endreportmainmatter{%
+\def\endreportmainmatter{
 	\fancyhead{}
-	\lhead{\nouppercase{\textsc{\leftmark}}}
-	\rhead{}
+    \lhead{\nouppercase{\textsc{\leftmark}}}
+\rhead{}
 }
 
 % Chapters
@@ -768,18 +777,12 @@ Unidade Curricular de \@course \\da \@majorfield}
 
 \setcounter{secnumdepth}{3}
 
-\definecolor{backGrayColor}{rgb}{0.7,0.7,0.7} % Background title color
-
 \titleformat{\chapter}[display]
-{\bfseries\Huge}				% format
-{\hfill\colorbox{backGrayColor}{\fontsize{80}{100}\selectfont{\textcolor{white}{\thechapter}}}} % label
-{1ex}							% sep
-{%\titlerule
-  \vspace{2ex}\filleft}			% before
-[\vspace{1cm}					%\titlerule
-]
-
-
+  {\normalfont\huge\bfseries}
+  {\chaptertitlename\ \thechapter}
+  {20pt}
+  {\Huge\bfseries}
+  [\vspace{1ex}\titlerule]
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Headers & footers
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

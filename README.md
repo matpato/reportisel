@@ -1,103 +1,233 @@
-# reportisel
+<p align="center">
+    <!-- PROJECT LOGO -->
+    <br />
+    <div style="display: flex; align-items: center;">
+        <div style="flex: 1;">
+            <a href="https://isel.pt" target="_blank">
+                <img src="./images/01_ISEL-Logotipo-RGB_Horizontal.png" alt="ISEL logo" style="width: 400px; height: auto;">
+            </a>
+        </div>
+    </div>
 
-Template for bachelor report written in LaTex
+[![GitHub forks](https://img.shields.io/github/forks/matpato/reportisel.svg?style=social&label=Fork)](https://github.com/matpato/reportisel)
+[![GitHub stars](https://img.shields.io/github/stars/matpato/reportisel.svg?style=social&label=Star)](https://github.com/matpato/reportisel)
+[![GitHub watchers](https://img.shields.io/github/watchers/matpato/reportisel.svg?style=social&label=Watch)](https://github.com/matpato/reportisel)
+[![GitHub followers](https://img.shields.io/github/followers/matpato.svg?style=social&label=Follow)](https://github.com/matpato/reportisel)
 
-<img src="/images/screen_demoHowtoUseLatex.png" width=50% >
-
-[Demo: click here](https://iselpt-my.sharepoint.com/personal/mpato_deetc_isel_pt/_layouts/15/guestaccess.aspx?docid=11ccdcf4547be49078043f55171a0a36e&authkey=AcjY5MHfh2kWs0ncUUVFUWg&e=6hM88v)
-
-## Instructions
-
-This document will serve as a template for the preparation of a report for the Programming curricular unit. To create a report of a higher grade you can see 
-https://github.com/matpato/thesisisel.
-
-	\documentclass[
-		rpt,		% (*)rpt, preprpt - Technical Report or PrepTechnical Report
-		pt,			% (*)pt, en - languages 
-		twoside,	% (*)twoside, oneside - single or double sided printing
-		12pt,		% (*)12pt, 11pt, 10pt - use font size
-		a4paper,	% paper size/format
-		utf8,		% (*)utf8, latin1 - Text encoding: Linux, Mac or Windows
-		onscreen, 	% (*)onscreen, onpaper - Page layout: screen versus paper print	
-		hyperref = true,  % (*)true, false - Hyperlinks in citations
-		listof = totoc
-	]{reportisel} 
-
-**How to run (terminal or console)**
-
-1. Single document w/o nomenclature or references<br>
-		$ pdflatex template
-
-1. With nomenclature:<br>
-		$ pdflatex template<br>
-		$ makeindex template.nlo -s nomencl.ist -o template.nls<br>
-		$ pdflatex template (twice)<br>
-
-1. With Bibliography:<br>
-		$ pdflatex template<br>
-		$ bibtex template<br>
-		$ pdflatex template (twice)<br>
-
-## Description
-
-**reportisel**: This is the main directory and includes:
-
-1. Appendixes: Directory with tex files with a section or table of subsidiary matter at the end of a book or document;
-1. Logo: Directory with Faculty logos;
-1. Chapters: Directory where to put user files (text and figures);
-	1. chapter# - tex files for each chapter (#: 1, 2, ...); 
-	1. scripts: Directory with useful bash scripts, e.g., for cleaning all temporary files;
-	1. img: Directory with all images to use in the chapters, e.g. \texttt{ra-raster.png}.
-	
-1. alpha-pt.bst: A file with bibliography names in portuguese, e.g., 'Relatório Técnico' e 'Tese de Mestrado' instead of 'Technical Report' and 'Master Thesis'. This file is used automatically if Portuguese is selected as the main language (see below);
-1. defaults.tex: A file with the main default values for the package (institution name, faculty's logo, degree name and similars - TO CHANGE BY THE USER);
-1. personaldataofthesis.tex: A file with the identification of report as well as the author and juries names - TO CHANGE BY THE USER;
-1. template.tex: The main file. Please refrain from changing the file content outside of the well defined area;
-1. bibliography.bib: The bib file. An easy way to find to import citation into bibtex is select option "Show links to import citation into BibTex" in \href{http://scholar.google.pt/scholar_settings?hl=en&as_sdt=0,5}{Scholar google settings};
-1. reportisel.cls: The  LaTeX class file for the thesis{} style. Currently, some of the defaults are stored here instead of \verb!defaults.tex!. This file should not be changed, unless you're ready to play with fire! :) - **DO NOT CHANGE**).
-1. relationalAlgebra.sty: Contains adapted Relational algebra symbols from ftp://reports.stanford.edu/www/dbgroup_only/latex-macros.html. This is used, only, for Sistemas de Informação course. This file should not be changed, unless you're ready to play with fire! :) - **DO NOT CHANGE**).
-
-All of these files should be in the same folder. The outputs will be a .pdf file called **template.pdf** with the manuscript. After that, this should be renamed. 
-
-In addition, latex generates extra files which are .aux, .log, .out, .bbl and .synctex.gz. Theses files provide important info: 
-	
-	.log - about the compiler that you are running (warning and errors);
-	.aux, .sync, .toc and others - are needed for things to actually work when you compile your document multiple times.
-
-Deleting them can break things, then it's not really a great idea to (automatically) remove them. However, if you desire to have a cleaner working directory, there are a few ways to accomplish that. For example, you can compile your document with the output-directory parameter. [Read more ...](https://tex.stackexchange.com/questions/369771/how-to-delete-files-generated-by-latex)   
-
-## Some informations
-
-The template will first automatically place the abstract in the language of the main text and then the abstract in the other language. For example, if the dissertation is written in Portuguese, the abstract will appear first in Portuguese, then in English, followed by the main text in Portuguese.
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/matpato/reportisel/graphs/commit-activity)
+[![made-with-latex](https://img.shields.io/badge/Made%20with-LaTeX-1f425f.svg?color=green)](https://www.latex-project.org/)
+[![GitHub license](https://img.shields.io/badge/License-LaTeX%20v1.3c-green.svg)](https://www.latex-project.org/lppl/lppl-1-3c)
 
 
-## How to write using LaTex
+![![Last commit](https://github.com/matpato/reportisel)](https://img.shields.io/github/last-commit/matpato/reportisel?color=blue)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+</p>
 
-The template presents some instructions how to write a report, or the major concepts how to write a good report: title, abstract, keywords and chapters. I recommend to you to read carefully. Moreover, you will find some instructions how to write in #LaTex, for instance how to insert a figure, table, some text formats and others. In addition, the list below you can see some webpages that may be useful
+A comprehensive document template collection for bachelor's degree technical reports at ISEL (Instituto Superior de Engenharia de Lisboa). Available in both **LaTeX** and **Microsoft Word** formats.
 
-	https://www.latex-project.org
-	https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes
-	http://www4.di.uminho.pt/~jcr/AULAS/didac/manuais/manual-latex.pdf
+![Template Demo](./images/screen_demoHowtoUseLatex.png)
 
-	tikZ and PGF: http://www.texample.net/tikz/
 
-## Available Software
+## Overview
 
-1. Overleaf is an online LaTeX and Rich Text collaborative writing and publishing tool that makes the whole process of writing, editing and publishing scientific documents much quicker and easier. (source: https://www.overleaf.com). In this case, you need to create an account. After logging in, create a new project in "New Project" and select "Upload Zipped Project". Place the zip of this content in the window that was opened. 
+This template collection provides structured frameworks for technical reports in Computer Science Engineering and Telecommunications Engineering programs. Designed for students working on industry projects, research collaborations, and scholarship programs, it offers flexibility for different writing preferences and technical requirements.
 
-1. Texmaker is a free, modern and cross-platform LaTeX editor for linux, macosx and windows systems that integrates many tools needed to develop documents with LaTeX, in just one application. (source: http://www.xm1math.net/texmaker/)
+**Template Options:**
+- **LaTeX Version**: Professional typesetting with advanced mathematical notation, automated formatting, and publication-quality output
+- **Microsoft Word Version**: User-friendly interface with familiar editing tools, ideal for collaborative editing and quick formatting
 
-1. MiKTeX (pronounced mick-tech) is an up-to-date implementation of TeX/LaTeX and related programs. TeX is a typesetting system written by Donald Ervin Knuth who says that it is intended for the creation of beautiful books - and especially for books that contain a lot of mathematics. (source: https://miktex.org)
-	
+For advanced thesis preparation, see the companion project: [iselthesis](https://github.com/matpato/iselthesis.git).
 
-## Author
+## Template Selection Guide
 
-	Matilde Pós-de-Mina Pato
+### Choose LaTeX When:
+- Working with complex mathematical formulations and equations
+- Requiring precise control over document formatting and typography
+- Collaborating on projects with version control systems (Git)
+- Preparing documents for academic publication or professional presentation
+- Need automated bibliography and cross-reference management
 
-Last update: June, 14th 2023 
+### Choose Microsoft Word When:
+- Prefer familiar WYSIWYG editing environment  
+- Working in teams that require real-time collaborative editing
+- Need quick document setup with minimal learning curve
+- Supervisor or industry partners require Word format for reviews
+- Integration with other Microsoft Office tools is essential
 
-**this package and template are not official for ISEL/IPL**
+---
 
-# License
+# LaTeX Version
 
-[MIT](https://choosealicense.com/licenses/mit/)
+## Features
+
+- **Bilingual Support**: Portuguese and English
+- **Professional Layout**: Optimized for both screen viewing and print
+- **Comprehensive Structure**: Includes chapters, appendices, bibliography, and nomenclature
+- **Industry Standards**: Follows academic and professional formatting guidelines
+- **Flexible Configuration**: Multiple document options and customization settings
+
+## Quick Start
+
+### Document Configuration
+
+```latex
+\documentclass[
+    rpt,        % Document type: rpt (Technical Report) or preprpt (Preliminary Report)
+    pt,         % Language: pt (Portuguese) or en (English)
+    twoside,    % Layout: twoside or oneside
+    12pt,       % Font size: 12pt, 11pt, or 10pt
+    a4paper,    % Paper format
+    utf8,       % Text encoding
+    onscreen,   % Output: onscreen or onpaper
+    hyperref = true,    % Enable hyperlinks
+    listof = totoc     % Include lists in table of contents
+]{reportisel}
+```
+
+### Compilation Instructions
+
+#### Basic Document (no references/nomenclature)
+```bash
+pdflatex template
+```
+
+#### With Nomenclature
+```bash
+pdflatex template
+makeindex template.nlo -s nomencl.ist -o template.nls
+pdflatex template
+pdflatex template
+```
+
+#### With Bibliography
+```bash
+pdflatex template
+bibtex template
+pdflatex template
+pdflatex template
+```
+
+## Project Structure
+
+```
+reportisel/
+├── Appendixes/          # Supplementary material sections
+├── Logo/                # Institution logos and branding
+├── Chapters/            # Main content directory
+│   ├── chapter1.tex     # Individual chapter files
+│   ├── chapter2.tex
+│   ├── scripts/         # Utility scripts for cleanup
+│   └── img/             # Images and figures
+├── defaults.tex         # Institution and program defaults (CUSTOMIZE)
+├── personaldataofthesis.tex  # Author and project information (CUSTOMIZE)
+├── template.tex         # Main document file
+├── bibliography.bib     # Reference database
+├── reportisel.cls       # LaTeX class file (DO NOT MODIFY)
+└── relationalAlgebra.sty  # Specialized symbols for IS courses
+```
+
+## Customization Guide
+
+### Essential Files to Modify
+
+1. **`defaults.tex`**: Update institution name, faculty logo, degree program
+2. **`personaldataofthesis.tex`**: Add author details, project title, supervisor information
+3. **`bibliography.bib`**: Import citations using [Google Scholar BibTeX export](http://scholar.google.pt/scholar_settings?hl=en&as_sdt=0,5)
+
+### Important Notes
+
+- The template automatically handles abstract placement based on the selected language
+- Generated auxiliary files (`.aux`, `.log`, `.out`, `.bbl`) contain important compilation information
+- Use the `output-directory` parameter to organize generated files if desired
+
+## Development Environment Options
+
+### Cloud-Based (Recommended for Beginners)
+
+**Overleaf**: Professional online LaTeX editor with real-time collaboration
+- Create account at [overleaf.com](https://www.overleaf.com)
+- Upload this template as a zipped project
+- Collaborative editing for team projects
+
+### Desktop Applications
+
+**TeXmaker**: Cross-platform integrated LaTeX environment
+- Download: [texmaker.org](http://www.xm1math.net/texmaker/)
+- Suitable for offline development
+
+**MiKTeX**: Complete TeX/LaTeX distribution for Windows
+- Download: [miktex.org](https://miktex.org)
+- Comprehensive package management
+
+## Learning Resources
+
+### LaTeX Fundamentals
+- [Official LaTeX Project](https://www.latex-project.org)
+- [Overleaf 30-Minute Tutorial](https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes)
+- [Portuguese LaTeX Manual](http://www4.di.uminho.pt/~jcr/AULAS/didac/manuais/manual-latex.pdf)
+
+### Advanced Graphics
+- [TikZ and PGF Examples](http://www.texample.net/tikz/)
+
+---
+
+# Microsoft Word Version
+
+The Word template provides the same professional structure and formatting guidelines as the LaTeX version, adapted for Microsoft Word's interface. It includes:
+
+## Features
+- **Pre-formatted Styles**: Heading styles, caption formats, and bibliography styles
+- **Template Structure**: Cover page, abstract pages, chapter layouts, and appendix formats  
+- **Collaboration Tools**: Comment system, track changes, and real-time co-authoring
+- **Reference Management**: Compatible with Mendeley, Zotero, and EndNote
+- **Cross-Platform**: Works with Word for Windows, Mac, and Word Online
+
+## Getting Started with Word Template
+1. Download the Word template file from the repository
+2. Open in Microsoft Word (2016 or later recommended)
+3. Customize the cover page and document properties
+4. Use the provided styles for consistent formatting
+5. Enable track changes for collaborative editing
+
+## Word Template Structure
+- **Cover Page**: Pre-formatted title page with ISEL branding
+- **Abstract Templates**: Portuguese and English abstract layouts
+- **Chapter Templates**: Structured section formatting with proper heading hierarchy
+- **Figure and Table Captions**: Automated numbering and cross-reference support
+- **Bibliography Section**: Citation style consistent with academic standards
+
+---
+
+# General Guidelines (Both Versions)
+
+## Academic Context
+
+This template supports various academic and professional activities:
+- **Industry Collaboration Projects**: Professional formatting for corporate partnerships
+- **Research Reports**: Structured presentation of experimental results
+- **Scholarship Documentation**: Standardized format for funding applications
+- **Technical Documentation**: Engineering project reports and specifications
+
+## Contributing
+
+We welcome contributions from faculty, students, and industry partners. Please ensure any modifications maintain compatibility with ISEL's academic standards.
+
+**For LaTeX contributions**: Submit pull requests with proper documentation  
+**For Word template improvements**: Include before/after screenshots and detailed change descriptions
+
+## Version Compatibility
+
+**LaTeX Requirements**: TeX Live 2020 or later, MiKTeX 21.1 or later  
+**Word Requirements**: Microsoft Word 2016 or later, Word Online, or compatible alternatives (LibreOffice Writer with limitations)
+
+## Acknowledgments
+
+**Author**: Matilde Pós-de-Mina Pato  
+**Last Updated**: June 03, 2025  
+**Institution**: Instituto Superior de Engenharia de Lisboa (ISEL/IPL)
+
+*Note: This template is an unofficial community resource and not formally endorsed by ISEL/IPL.*
+
+## License
+
+[MIT License](https://choosealicense.com/licenses/mit/) - Free for academic and commercial use.
