@@ -2,8 +2,8 @@
   <a href="https://isel.pt" target="_blank">
     <img src="./images/01_ISEL-Logotipo-RGB_Horizontal.png" alt="ISEL logo" width="400">
   </a>
-
-
+</div>
+<div align="left">
 [![GitHub forks](https://img.shields.io/github/forks/matpato/reportisel.svg?style=social&label=Fork)](https://github.com/matpato/reportisel)
 [![GitHub stars](https://img.shields.io/github/stars/matpato/reportisel.svg?style=social&label=Star)](https://github.com/matpato/reportisel)
 [![GitHub watchers](https://img.shields.io/github/watchers/matpato/reportisel.svg?style=social&label=Watch)](https://github.com/matpato/reportisel)
