@@ -5,17 +5,17 @@
 </div>
 
 
-[![GitHub forks](https://img.shields.io/github/forks/matpato/iselreport.svg?style=social&label=Fork)](https://github.com/matpato/iselreport)
-[![GitHub stars](https://img.shields.io/github/stars/matpato/iselreport.svg?style=social&label=Star)](https://github.com/matpato/iselreport)
-[![GitHub watchers](https://img.shields.io/github/watchers/matpato/iselreport.svg?style=social&label=Watch)](https://github.com/matpato/iselreport)
+[![GitHub forks](https://img.shields.io/github/forks/matpato/reportisel.svg?style=social&label=Fork)](https://github.com/matpato/iselreport)
+[![GitHub stars](https://img.shields.io/github/stars/matpato/reportisel.svg?style=social&label=Star)](https://github.com/matpato/iselreport)
+[![GitHub watchers](https://img.shields.io/github/watchers/matpato/reportisel.svg?style=social&label=Watch)](https://github.com/matpato/iselreport)
 [![GitHub followers](https://img.shields.io/github/followers/matpato.svg?style=social&label=Follow)](https://github.com/matpato/iselreport)
 
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/matpato/iselreport/graphs/commit-activity)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/matpato/reportisel/graphs/commit-activity)
 [![made-with-latex](https://img.shields.io/badge/Made%20with-LaTeX-1f425f.svg?color=green)](https://www.latex-project.org/)
 [![GitHub license](https://img.shields.io/badge/License-LaTeX%20v1.3c-green.svg)](https://www.latex-project.org/lppl/lppl-1-3c)
 
 
-![![Last commit](https://github.com/matpato/iselreport)](https://img.shields.io/github/last-commit/matpato/iselreport?color=blue)
+![![Last commit](https://github.com/matpato/iselreport)](https://img.shields.io/github/last-commit/matpato/reportisel?color=blue)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 A comprehensive document template collection for bachelor's degree technical reports at ISEL (Instituto Superior de Engenharia de Lisboa). Available in both **LaTeX** and **Microsoft Word** formats.
