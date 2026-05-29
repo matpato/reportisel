@@ -69,7 +69,7 @@ For advanced thesis preparation, see the companion project: [iselthesis](https:/
 \documentclass[
     rpt,        % Document type: rpt (Technical Report) or preprpt (Preliminary Report)
     pt,         % Language: pt (Portuguese) or en (English)
-    twoside,    % Layout: twoside or oneside
+    oneside,    % Layout: twoside or oneside
     12pt,       % Font size: 12pt, 11pt, or 10pt
     a4paper,    % Paper format
     utf8,       % Text encoding
@@ -111,14 +111,23 @@ iselreport/
 ├── Chapters/            # Main content directory
 │   ├── chapter1.tex     # Individual chapter files
 │   ├── chapter2.tex
+│   ├── ...
 │   ├── scripts/         # Utility scripts for cleanup
 │   └── img/             # Images and figures
-├── defaults.tex         # Institution and program defaults (CUSTOMIZE)
-├── personaldataofthesis.tex  # Author and project information (CUSTOMIZE)
+├── Config/              # Configuration directory
+│   ├── config.tex       # List of files to be compile (CUSTOMIZE)
+│   ├── defaults.tex     # Institution and program defaults (CUSTOMIZE)
+│   └── personaldataofthesis.tex  # Author and project information (CUSTOMIZE)
+├── iselreport-files/    # Extra files directory
+│   ├── version.sty
+│   └── frontpage.clo    # Design of the first page (DO NOT MODIFY)
+├── sty/                 # Extra files directory
+│   ├── relationalAlgebra.sty  # Specialized symbols for IS courses
+│   └── code.sty         # Defined code language for embedding
 ├── template.tex         # Main document file
 ├── bibliography.bib     # Reference database
-├── iselreport.cls       # LaTeX class file (DO NOT MODIFY)
-└── relationalAlgebra.sty  # Specialized symbols for IS courses
+└── iselreport.cls       # LaTeX class file (DO NOT MODIFY)
+
 ```
 
 ## Customization Guide

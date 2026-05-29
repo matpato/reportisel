@@ -12,7 +12,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}[1994/06/01]
-\ProvidesPackage{code}[2018/03/03 v1 Base file of Helper package to develop presentations in beamer]
+\ProvidesPackage{code}[2018/03/03 v1 Base file of Helper package to manage code language]
 
 %************** PACKAGES ***************
 \RequirePackage{xparse} %ARGUMENTS PARSING
@@ -21,28 +21,12 @@
 
 %************** STYLES ***************
 % == Color Definitions ===
-\definecolor{olivegreen}    {cmyk}{0.64, 0 , 0.95, 0.40}
-\definecolor{dkgreen}{rgb}{0,0.6,0}	
-\definecolor{midnightblue}  {cmyk}{0.98, 0.13, 0 , 0.43}
-
-\definecolor{mauve}{rgb}{0.58,0,0.82}
-
-\definecolor{ltgray}{rgb}{0.5,0.5,0.5}
-
-\definecolor{ForestGreen}    {cmyk}{0.76, 0 , 0.76, 0.45}
-\definecolor{BrickRed}{cmyk}{0,0.73,0.69,0.28}	
-\definecolor{MidnightBlue}  {cmyk}{0.98, 0.78, 0 , 0.56}
 % Listings
 \usepackage{fancyvrb}
 \colorlet{lstKeywordsColor}{MidnightBlue}
 \colorlet{lstKeywordsAltColor}{BrickRed}
 \colorlet{lstCommentsColor}{ForestGreen}
 \colorlet{lstStringColor}{BrickRed}
-
-%%% Always I forget this so I created some aliases
-\def\ContinueLineNumber{\lstset{firstnumber=last}}
-\def\StartLineAt#1{\lstset{firstnumber=#1}}
-\let\numberLineAt\StartLineAt
 
 %%% MATH: THEREFORE
 \def\therefore{\boldsymbol{\text{ }
@@ -97,20 +81,6 @@
 
 \renewcommand{\lstlistingname}{Código}
 
-% ************* Continue line numbers in listings package  *************
-%  Always I forget this so I created some aliases
-
-\def\ContinueLineNumber{
-	\lstset{
-		firstnumber = last
-		}
-	}
-\def\StartLineAt#1{
-	\lstset{
-		firstnumber = #1
-		}
-	}
-\let\numberLineAt\StartLineAt
 
 \lstset{
 literate=%
