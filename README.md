@@ -5,17 +5,17 @@
 </div>
 
 
-[![GitHub forks](https://img.shields.io/github/forks/matpato/reportisel.svg?style=social&label=Fork)](https://github.com/matpato/reportisel)
-[![GitHub stars](https://img.shields.io/github/stars/matpato/reportisel.svg?style=social&label=Star)](https://github.com/matpato/reportisel)
-[![GitHub watchers](https://img.shields.io/github/watchers/matpato/reportisel.svg?style=social&label=Watch)](https://github.com/matpato/reportisel)
-[![GitHub followers](https://img.shields.io/github/followers/matpato.svg?style=social&label=Follow)](https://github.com/matpato/reportisel)
+[![GitHub forks](https://img.shields.io/github/forks/matpato/iselreport.svg?style=social&label=Fork)](https://github.com/matpato/iselreport)
+[![GitHub stars](https://img.shields.io/github/stars/matpato/iselreport.svg?style=social&label=Star)](https://github.com/matpato/iselreport)
+[![GitHub watchers](https://img.shields.io/github/watchers/matpato/iselreport.svg?style=social&label=Watch)](https://github.com/matpato/iselreport)
+[![GitHub followers](https://img.shields.io/github/followers/matpato.svg?style=social&label=Follow)](https://github.com/matpato/iselreport)
 
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/matpato/reportisel/graphs/commit-activity)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/matpato/iselreport/graphs/commit-activity)
 [![made-with-latex](https://img.shields.io/badge/Made%20with-LaTeX-1f425f.svg?color=green)](https://www.latex-project.org/)
 [![GitHub license](https://img.shields.io/badge/License-LaTeX%20v1.3c-green.svg)](https://www.latex-project.org/lppl/lppl-1-3c)
 
 
-![![Last commit](https://github.com/matpato/reportisel)](https://img.shields.io/github/last-commit/matpato/reportisel?color=blue)
+![![Last commit](https://github.com/matpato/iselreport)](https://img.shields.io/github/last-commit/matpato/iselreport?color=blue)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 A comprehensive document template collection for bachelor's degree technical reports at ISEL (Instituto Superior de Engenharia de Lisboa). Available in both **LaTeX** and **Microsoft Word** formats.
@@ -76,7 +76,7 @@ For advanced thesis preparation, see the companion project: [iselthesis](https:/
     onscreen,   % Output: onscreen or onpaper
     hyperref = true,    % Enable hyperlinks
     listof = totoc     % Include lists in table of contents
-]{reportisel}
+]{iselreport}
 ```
 
 ### Compilation Instructions
@@ -105,7 +105,7 @@ pdflatex template
 ## Project Structure
 
 ```
-reportisel/
+iselreport/
 ├── Appendixes/          # Supplementary material sections
 ├── Logo/                # Institution logos and branding
 ├── Chapters/            # Main content directory
@@ -117,7 +117,7 @@ reportisel/
 ├── personaldataofthesis.tex  # Author and project information (CUSTOMIZE)
 ├── template.tex         # Main document file
 ├── bibliography.bib     # Reference database
-├── reportisel.cls       # LaTeX class file (DO NOT MODIFY)
+├── iselreport.cls       # LaTeX class file (DO NOT MODIFY)
 └── relationalAlgebra.sty  # Specialized symbols for IS courses
 ```
 
@@ -218,7 +218,7 @@ We welcome contributions from faculty, students, and industry partners. Please e
 ## Acknowledgments
 
 **Author**: Matilde Pós-de-Mina Pato  
-**Last Updated**: June 03, 2025  
+**Last Updated**: May 03, 2026  
 **Institution**: Instituto Superior de Engenharia de Lisboa (ISEL/IPL)
 
 *Note: This template is an unofficial community resource and not formally endorsed by ISEL/IPL.*

@@ -1,0 +1,39 @@
+===================================================================
+CHANGELOG — reportisel
+===================================================================
+
+* 2025-06-03 — Version 3.1 — Template renamed to ISEL report (iselreport)
+  + Renamed adviser to professor throughout the class and frontpage
+  + Removed all blank pages (cleardoublepage replaced by clearpage)
+  + Removed dead commented-out code from iselreport.cls
+  + Restored \printotherlists with clearpage (no blank pages)
+  + Replaced memoir-only \tocfile in \lstlistoflistings with \@starttoc
+  + Fixed load order: fancyvrb and fvextra now load before listings
+  + Extracted user configuration into Config/config.tex
+  + main.tex now contains no user content (do not edit)
+
+* 2023-06-14 — Version 3.0 — Major restructuring
+  + Added Config/ directory for all user personal data and settings
+  + Added personaldataofreport.tex for report identification
+  + Added defaults.tex for institution defaults
+  + Updated chapter2 (user manual) to reflect new folder structure
+
+* 2020-09-25 — Version 2.2 — Maintenance release
+  + Minor fixes and adjustments
+
+* 2019-10-20 — Version 2.1 — Maintenance release
+  + Minor fixes and adjustments
+
+* 2019-01-05 — Version 2.0 — Major update
+  + Added glossaries support
+  + Added conditional lists (figures, tables, listings)
+  + Added xltabular and longtable support
+
+* 2017-09-01 — Version 1.1 — Maintenance release
+  + Minor fixes
+
+* 2017-03-13 — Version 1.0 — Initial release
+  + First public version of reportisel class
+  + Support for Portuguese and English
+  + BSc report (rpt) and preliminary report (preprpt) document types
+  + onscreen and onpaper layout options

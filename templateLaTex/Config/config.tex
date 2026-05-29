@@ -1,0 +1,56 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% config.tex
+%% User configuration: add your files and settings here.
+%% Do NOT edit main.tex.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%======================================================
+%% Report identification
+%% Edit the file "personaldataofreport.tex" for title, authors, etc.
+%======================================================
+\input{Config/personaldataofreport}
+
+%======================================================
+%% Hyperref metadata
+%======================================================
+\hypersetup{
+  a4paper=true,
+  pdftitle={\thetitle},
+  pdfauthor={\theauthor},
+  pdfsubject={},
+  pdfkeywords={{},{},{}}
+}
+
+%======================================================
+%% Abstract files (located in Chapters/)
+%======================================================
+\ptabstractfile{resumo}
+\enabstractfile{abstract}
+
+%======================================================
+%% Front matter lists (comment out what you don't need)
+%======================================================
+\addlisttofrontmatter{\conditionalLoF}                      % List of Figures
+\addlisttofrontmatter{\conditionalLoT}                      % List of Tables
+\addlisttofrontmatter{\conditionalLoL}                      % List of Code Listings
+\addlisttofrontmatter{\printnoidxglossary[type=acronym]}    % List of Acronyms
+\addlisttofrontmatter{\printnoidxglossary}                  % Glossary
+
+%======================================================
+%% Chapters (located in Chapters/)
+%% syntax: \chapterfile{filename}
+%======================================================
+\chapterfile{chapter1}
+\chapterfile{chapter2}
+\chapterfile{chapter3}
+
+%======================================================
+%% Bibliography file
+%======================================================
+\addbibresource{bibliography.bib}
+
+%======================================================
+%% Appendixes (located in Appendixes/, comment if none)
+%% syntax: \appendixfile{filename}
+%======================================================
+\appendixfile{appendix1}

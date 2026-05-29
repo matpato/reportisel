@@ -10,160 +10,174 @@
 % ================
 % = Introduction =
 % ================
-\section{Introdução} % (fold)
+\section{Introdução}
 \label{sec:introduction}
 Este documento reutiliza algumas partes do \textit{template} criado para a escrita da Dissertação/Trabalho de Projecto de Mestrado de MEIC. Por ser meramente informativo, o resto do documento encontra-se escrito na lingua inglesa.
-
-% section introduction (end)
 
 % ====================
 % = Folder Structure =
 % ====================
-\section{Folder Structure} % (fold)
+\section{Folder Structure}
 \label{sec:folder_structure}
 
-The template file for writing dissertations in  \texttt{LaTeX} is organized into a main directory, a set of files and sub-directories. \textbf{reportisel}  is the main directory and includes:
-	\begin{description}
-		\item[Logo] Directory with Faculty logos;
-		\item[Chapters] Directory where to put user files (text and figures);
-		\begin{description}
-		\item[scripts] Directory with useful bash scripts, e.g., for cleaning all temporary files;
-		\item[img] Directory with all images to use in the chapters, e.g. \texttt{ra-raster.png};
-		\end{description}
-		\item[alpha-pt.bst] A file with bibliography names in portuguese, e.g., 'Relatório Técnico'. This file is used automatically if Portuguese is selected as the main language (see below);
-		\item[defaults.tex] A file with the main default values for the package (institution name, faculty's logo, degree name and similars - {\color{red}{TO CHANGE BY THE USER}});
-		\item[personaldataofreport.tex] A file with the main default values for the package (identification of report as well as the author and juries - {\color{red}{TO CHANGE BY THE USER}});
-		\item[template.tex] The main file. You should run  \texttt{LaTeX} in this one. Please refrain from changing the file content outside of the well defined area;
-		\item[bibliography.bib] The bib file. An easy way to find to import citation into \texttt{bibtex} is select option \texttt{Show links to import citation into \texttt{BibTex}} in \href{http://scholar.google.pt/scholar_settings?hl=en&as_sdt=0,5}{\texttt{Scholar google settings}}.
-		\item[reportisel.cls] The  \texttt{LaTeX} class file for the thesis{} style. Currently, some of the defaults are stored here instead of \verb!defaults.tex!. This file should not be changed, unless you're ready to play with fire! :) - {\color{red}{DO NOT CHANGE}});
-	\end{description}
+The template file for writing reports in \texttt{LaTeX} is organized into a main
+directory, a set of files and sub-directories. \textbf{reportisel} is the main
+directory and includes:
+\begin{description}
+    \item[Logo] Directory with Faculty logos;
+    \item[Chapters] Directory where to put user files (text and figures):
+    \begin{description}
+        \item[scripts] Directory with useful bash scripts, e.g., for cleaning all temporary files;
+        \item[img] Directory with all images to use in the chapters, e.g.\ \texttt{ra-raster.png};
+    \end{description}
+    \item[Config] Directory with all personal data and configuration files that students must edit:
+    \begin{description}
+        \item[defaults.tex] Main default values for the package (institution name, faculty logo, degree name and similar ---
+        {\color{red}{TO CHANGE BY THE USER}});
+        \item[personaldataofreport.tex] Identification of the report, authors and professor ---
+        {\color{red}{TO CHANGE BY THE USER}};
+        \item[config.tex] List of chapters, appendixes, bibliography file and front matter lists to include ---
+        {\color{red}{TO CHANGE BY THE USER}};
+    \end{description}
+    \item[alpha-pt.bst] A file with bibliography names in Portuguese, e.g., `Relat\'orio T\'ecnico'. Used automatically when Portuguese is selected as the main language;
+    \item[bibliography.bib] The bibliography file. An easy way to import citations is to select \texttt{Show links to import citation into BibTeX} in \href{http://scholar.google.pt/scholar_settings?hl=en&as_sdt=0,5}{\texttt{Google Scholar settings}};
+    \item[main.tex] The main file. Run \texttt{LaTeX} on this one. Do not change its contents ---
+    {\color{red}{DO NOT CHANGE}};
+    \item[reportisel.cls] The \texttt{LaTeX} class file defining the report style. Should not be changed unless you are ready to play with fire! :) ---
+    {\color{red}{DO NOT CHANGE}};
+\end{description}
 
 Again, we would like to recall that all the user \texttt{LaTeX} files should be stored in the \verb!reportisel! directory, and all the images in \verb!reportisel/Chapters/img! directory.\todo[inline]{Yet another note!}
-% section folder_structure (end)
 
 % ===================
 % = Package options =
 % ===================
-\section{Package Options} % (fold)
-\label{sec:package_options}
+\section{Package Options}
+\label{sec:packageoptions}
 
-The thesis{} style includes the following options, that must be included in the options list in the \verb!\documentclass[options]{reportisel}! line at the top of the \texttt{template.tex} file.
+The thesis style includes the following options (see \tablename~\ref{tab:vardescription}), that must be included in the options list in the \texttt{\textbackslash documentclass[options]} line at the top of the \texttt{template.tex} file.
+% 
+The list below aggregates related options in a single item. For each list, 
+the default value is prefixed with an asterisk (*).
 
-The list below aggregates related options in a single item. For each list, the default value is prefixed with a *.
+\begin{longtable}{ >{\bfseries}l p{0.7\linewidth} }
+\caption{Description of options used in this document}
+\label{tab:vardescription} \\
+    \toprule
+\textbf{Option} & \textbf{Definition and values} \\
+    \midrule
+\endfirsthead
+\caption[]{Description of options used in this document (Cont.)} \\
+    \toprule
+\textbf{Option} & \textbf{Definition and values} \\
+    \midrule
+\endhead
+    \multicolumn{2}{r}{\footnotesize\textit{Continued on the next page}}
+\endfoot
+    \bottomrule
+\endlastfoot
+rpt / preprpt      & \textbf{Class of document}: final course report --- rpt(*) or preliminary report --- preprpt. \\ \midrule
+pt / en            & \textbf{Main language}: Portuguese --- pt(*) or English --- en. \\ \midrule
+oneside / twoside  & \textbf{Page layout}: single sided --- oneside or double sided --- twoside(*). \\ \midrule
+11pt / 12pt        & \textbf{Font size}: 11pt or 12pt(*). \\ \midrule
+utf8 / latin1      & \textbf{Text encoding}: UTF-8 --- utf8(*) or Latin-1 --- latin1. \\ \midrule
+onscreen / onpaper & \textbf{Target medium}: optimised for screen --- onscreen(*) or for printing --- onpaper. \\ \midrule
+listof             & \textbf{Lists in table of contents}: set \texttt{listof=totoc} to include all lists as entries in the table of contents. \\
+    \bottomrule
+\end{longtable}
 
-\subsection{Language Related Options} % (fold)
+\subsection{Language Related Options}
 \label{sub:language_related_options}
 
 You must choose the main language for the document. The available options are:
 
 \begin{enumerate}
-	\item \textbf{*pt} --- The text is written in Portuguese (with a small abstract in English).
-	\item \textbf{en} --- The text is written in English (with a small abstract in Portuguese).
+    \item \textbf{pt} --- The text is written in Portuguese (with a small abstract in English).
+    \item \textbf{en} --- The text is written in English (with a small abstract in Portuguese).
 \end{enumerate}
 
 The language option affects:
 \begin{itemize}
-	\item \textbf{The order of the summaries.} At first the abstract in the main language and then in the foreign language. This means that if your main language for the document in english, you will see first the abstract (in english) and then the 'resumo' (in portuguese). If you switch the main language for the document, it will also automatically switch the order of the summaries.
-	\item \textbf{The names for document sectioning.} E.g., 'Chapter' vs.\ 'Capítulo', 'Table of Contents' vs.\ 'Índice', 'Figure' vs.\ 'Figura', etc.
-	\item \textbf{The type of documents in the bibliography.} E.g., 'Technical Report' vs.\ 'Relatório Técnico'.
-\end{itemize} 
+    \item \textbf{The order of the summaries.} At first the abstract in the main language and then in the foreign language. This means that if your main language for the document is English, you will see first the abstract (in English) and then the 'Resumo' (in Portuguese). If you switch the main language for the document, it will also automatically switch the order of the summaries.
+    \item \textbf{The names for document sectioning.} E.g., 'Chapter' vs. 'Capítulo', 'Table of Contents' vs. 'Indice', 'Figure' vs. 'Figura', etc.
+    \item \textbf{The type of documents in the bibliography.} E.g., 'Technical Report' vs. 'Relatório Técnico'.
+\end{itemize}
 
-No mater which language you chose, you will always have the appropriate hyphenation rules according to the language at that point. You always get portuguese hyphenation rules in the 'Resumo', english hyphenation rules in the 'Abstract', and then the main language hyphenation rules for the rest of the document. If you need to force hyphenation write inside of \verb!\hyphenation{}! the hyphenated word, e.g. \verb!\hyphenation{op-ti-cal net-works}!.
-% section package_options (end)
+No matter which language you choose, you will always have the appropriate hyphenation rules according to the language at that point. You always get Portuguese hyphenation rules in the `Resumo', English hyphenation rules in the `Abstract', and then the main language hyphenation rules for the rest of the document. If you need to force hyphenation write inside of \verb!\hyphenation{}! the hyphenated word, e.g.\ \verb!\hyphenation{op-ti-cal net-works}!.
 
-\subsection{Class of Text} % (fold)
+\subsection{Class of Text}
 \label{sub:class_of_text}
 
 You must choose the class of text for the document. The available options are:
 
 \begin{enumerate}
-	\item \textbf{rpt} --- BSc report.
-	\item \textbf{preprpt} --- Preparation of Bsc report. This is a preliminary report graduate students at ISEL/IPL must prepare to conclude the first semester.
+    \item \textbf{rpt} --- BSc report.
+    \item \textbf{preprpt} --- Preparation of BSc report. This is a preliminary report graduate students at ISEL/IPL must prepare to conclude the first semester.
 \end{enumerate}
-%% subsection class_of_text (end)
-%
-%% ============
-%% = Printing =
-%% ============
-\subsection{Printing} % (fold)
+
+\subsection{Printing}
 \label{sub:printing}
 
 You must choose how your document will be printed. The available options are:
 \begin{enumerate}
-	\item \textbf{oneside} --- Single side page printing.
-	\item \textbf{*twoside} --- Double sided page printing.
+    \item \textbf{oneside} --- Single side page printing.
+    \item \textbf{twoside} --- Double sided page printing.
 \end{enumerate}
-% subsection printing (end)
 
-% =============
-% = Font Size =
-% =============
-\subsection{Font Size} % (fold)
+\subsection{Font Size}
 \label{ssec:font_size}
 
-You must select the encoding for your text. The available options are:
+You must select the font size for your document. The available options are:
 \begin{enumerate}
-	\item \textbf{11pt} --- Eleven (11) points font size.
-	\item \textbf{*12pt} --- Twelve (12) points font size. You should really stick to 12pt\ldots
+    \item \textbf{11pt} --- Eleven (11) points font size.
+    \item \textbf{12pt} --- Twelve (12) points font size. You should really stick to 12pt\ldots
 \end{enumerate}
-% subsection font_size (end)
 
-% =================
-% = Text encoding =
-% =================
-\subsection{Text Encoding} % (fold)
+\subsection{Text Encoding}
 \label{ssec:text_encoding}
 
-You must choose the font size for your document. The available options are:
+You must choose the text encoding for your document. The available options are:
 \begin{enumerate}
-	\item \textbf{latin1} --- Use Latin-1 (\href{http://en.wikipedia.org/wiki/ISO/IEC_8859-1}{ISO 8859-1}) encoding.  Most probably you should use this option if you use Windows;
-	\item \textbf{utf8} --- Use \href{http://en.wikipedia.org/wiki/UTF-8}{UTF8} encoding.    Most probably you should use this option if you are not using Windows.
+    \item \textbf{latin1} --- Use Latin-1 (\href{http://en.wikipedia.org/wiki/ISO/IEC_8859-1}{ISO 8859-1}) encoding. Most probably you should use this option if you use Windows;
+    \item \textbf{utf8} --- Use \href{http://en.wikipedia.org/wiki/UTF-8}{UTF-8} encoding. Most probably you should use this option if you are not using Windows.
 \end{enumerate}
-% subsection font_size (end)
 
-% ============
-% = Examples =
-% ============
-\subsection{Examples} % (fold)
+\subsection{Examples}
 \label{ssec:examples}
 
-Let's have a look at a couple of examples:
+Let's have a look at a couple of examples:\\
 
-\begin{itemize}
-	\item Preparation of report document, in portuguese, with 12pt size, to be printed twoside sided  and to be read on screen
-	\begin{lstlisting}[language=myLatex]
-	\documentclass[
-		preprpt,	% (*)rpt, preprpt - Technical Report or PrepTechnical Report
-		pt,	% (*)pt, en - languages 
-		twoside,	% (*)twoside, oneside - single or double sided printing
-		12pt,	% (*)12pt, 11pt, 10pt - use font size
-		a4paper,	% Paper size/format
-		utf8,		% (*)utf8, latin1 - Text encoding: Linux, Mac or Windows
-		onscreen,	% (*)onscreen, onpaper - Page layout: screen versus paper print
-		hyperref = true,  % (*)true, false - Hyperlinks in citations
-		listof = totoc	% Print all entries in table of contents
-	]{reportisel} 
-	\end{lstlisting}
-	\item Report, in english, with 12pt size and to be printed one sided (I wonder why one would do this!), in paper
-	\begin{lstlisting}[language=myLatex]
-	\documentclass[
-		rpt,	% (*)rpt, preprpt - Technical Report or PrepTechnical Report
-		pt,	% (*)pt, en - languages 
-		oneside,	% (*)twoside, oneside - single or double sided printing
-		12pt,	% (*)12pt, 11pt, 10pt - use font size
-		a4paper,	% Paper size/format
-		utf8,		% (*)utf8, latin1 - Text encoding: Linux, Mac or Windows
-		onpaper,	% (*)onscreen, onpaper - Page layout: screen versus paper print
-		hyperref = true,  % (*)true, false - Hyperlinks in citations
-		listof = totoc	% Print all entries in table of contents
-	]{reportisel} 
-	\end{lstlisting}
-\end{itemize}
-% subsection examples (end)
+\textbf{1}. Preparation of report document, in Portuguese, with 12pt size, to be printed two-sided and to be read on screen:
+\begin{lstlisting}[language=myLaTeX]
+\documentclass[
+    preprpt,      % rpt, preprpt
+    pt,           % pt, en
+    twoside,      % twoside, oneside
+    12pt,         % 12pt, 11pt
+    a4paper,
+    utf8,         % utf8, latin1
+    onscreen,     % onscreen, onpaper
+    listof=totoc
+]{reportisel}    
+\end{lstlisting}
 
-\section{How to Write Using \texttt{LaTeX}} % (fold)
+
+\textbf{2}. Report, in English, with 12pt size, to be printed one-sided, on paper:
+\begin{lstlisting}[language=myLaTeX]
+\documentclass[
+    rpt,          % rpt, preprpt
+    en,           % pt, en
+    oneside,      % twoside, oneside
+    12pt,
+    a4paper,
+    utf8,
+    onpaper,      % onscreen, onpaper
+    listof=totoc
+]{reportisel}
+\end{lstlisting}
+
+
+\section{How to Write Using \texttt{LaTeX}}
 \label{sec:how_to_write_using_latex}
 
-Please have a look at Chapter~\ref{cha:a_short_latex_tutorial_with_examples}, where you may find many examples of \href{http://tobi.oetiker.ch/lshort/lshort.pdf}{\texttt{LaTeX}} constructs, such as Sectioning, inserting Figures and Tables, writing Equations, Theorems and algorithms, exhibit code listings, etc.
-
-%% section how_to_write_using_latex (end)
+Please have a look at Chapter~\ref{cha:a_short_latex_tutorial_with_examples}, where you may find many examples of \href{http://tobi.oetiker.ch/lshort/lshort.pdf}{\texttt{LaTeX}} constructs, such as sectioning, inserting figures and tables, writing equations, theorems and algorithms, exhibit code listings, etc.
